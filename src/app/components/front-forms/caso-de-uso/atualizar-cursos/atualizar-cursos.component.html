@@ -1,0 +1,36 @@
+<form [formGroup]="formulario">
+  <h3>Altere um curso</h3>
+  <div class="campo">
+    <label for="codigo">Código atual:</label>
+    <input id="codigo" formControlName="codigo"  type="text" [maxLength]="15"/>
+    <div class="contador-caracteres" >
+      {{ this.cursoSignalService.requestCursos.procurar().codigo?.length || 0 }}/15
+    </div>
+  </div>
+  <div class="campo">
+    <label for ="codigoNovo">Código novo:</label>
+    <input id="codigoNovo" formControlName="codigoNovo"  type="text" [maxLength]="15"/>
+    <div class="contador-caracteres" >
+      {{ this.cursoSignalService.requestCursos.procurar().codigoNovo?.length || 0 }}/15
+    </div>
+  </div>
+  <div class="campo">
+    <label for="titulo">Título novo:</label>
+    <input id="titulo" type="text" formControlName="titulo" [maxLength]="30"/>
+    <div class="contador-caracteres" >
+      {{ this.cursoSignalService.requestCursos.procurar().titulo?.length || 0 }}/30
+    </div>
+  </div>
+  <div class="campo">
+    <label for="descricao">Descrição nova:</label>
+    <textarea id="descricao" type="text" formControlName="descricao" [maxLength]="100">
+    </textarea>
+    <div class="contador-caracteres" >
+      {{ this.cursoSignalService.requestCursos.procurar().descricao?.length || 0 }}/100
+    </div>
+  </div>
+  <div class="campo">
+    <label for="cargahoraria">Carga horária nova:</label>
+    <input id="cargahoraria" type="number" formControlName="cargaHoraria" [max]="300" />
+  </div>
+</form>

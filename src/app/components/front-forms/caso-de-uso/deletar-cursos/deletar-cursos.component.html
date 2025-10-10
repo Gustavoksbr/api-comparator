@@ -1,0 +1,10 @@
+<form [formGroup]="formulario">
+  <h3>Delete um curso</h3>
+  <div class="campo">
+    <label for="codigo">Código:</label>
+    <input id="codigo" formControlName="codigo"  type="text" [maxLength]="15"/>
+    <div class="contador-caracteres" >
+      {{ this.cursoSignalService.requestCursos.procurar().descricao?.length || 0 }}/15
+    </div>
+  </div>
+</form>

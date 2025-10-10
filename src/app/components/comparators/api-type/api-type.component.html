@@ -1,0 +1,96 @@
+<div class="api-type-container">
+  <div class="api-type-header "
+       [ngClass]="{'api-type-header-rest':apiType()==='REST',
+        'api-type-header-graphql':apiType()==='GRAPHQL',
+        'api-type-header-soap':apiType()==='SOAP'
+        }"
+       (click)="toggle()" >
+    <p>{{apiType()}}</p>
+    <span class="indicator" [class.pra-baixo]="isOpen()">^</span>
+  </div>
+
+
+ <div class="api-type-main " [ngClass]="{'aparecer': isOpen(), 'desaparecer': !isOpen()}">
+    <div class="api-type-content "
+         [ngClass]="{'box-shadow-rest':apiType()==='REST',
+          'box-shadow-graphql':apiType()==='GRAPHQL',
+          'box-shadow-soap':apiType()==='SOAP'
+          }">
+
+      <div class="metodo-url-executar-container">
+
+
+        <div class="metodo-executar-container">
+          <div
+            class="metodo-content"
+            [ngClass]="{
+        'getColor': httpMetodo() === 'GET',
+        'postColor': httpMetodo() === 'POST',
+        'putColor': httpMetodo() === 'PUT',
+        'deleteColor': httpMetodo() === 'DELETE'
+      }">
+            <p>{{ this.httpMetodo() }}</p>
+          </div>
+
+          <div
+            class="executar"
+            (click)="executar(casoDeUsoAtual(), apiType(), bodyRequest(), url(), httpMetodo())"
+            [ngStyle]="{'cursor': carregando() ? 'default' : 'pointer'}">
+            @if (!carregando()) {
+              <div>Executar</div>
+              <img src="images/botao-executar.png" alt="Botão de executar" />
+            } @else {
+              <div class="loader"></div>
+            }
+          </div>
+        </div>
+
+
+        <div class="url-content">
+          <p class="url-texto">
+            https://cursos-api-7vr6.onrender.com/<b>{{ this.url() }}</b>
+          </p>
+        </div>
+
+      </div>
+
+
+      @if (apiType()==='GRAPHQL' && casoDeUsoAtual() != 'deletar') {
+        <div class="selecionar-atributos-para-response-graphql-container">
+          <h4>Quais campos você quer de resposta?</h4>
+          <div class="selecionar-atributos-para-response-graphql-content">
+          @for (campo of campos; track campo) {
+          <label>
+            <input
+              type="checkbox"
+              (change)="alterarGraphqlBodyResponse(campo)"
+              [checked]="this.cursoSignalService.selectGrapqhlBodyResponse()[campo]"
+            />
+            {{ campo }}
+          </label>
+          }
+          </div>
+        </div>
+      }
+      <div class="codigos-container">
+        <!-- body request -->
+      @if (apiType()=='GRAPHQL'){
+      <app-code-highlighter-request
+        [apiTipo]="apiType()"
+        [graphqlBodyResponse]="this.cursoSignalService.selectGrapqhlBodyResponse()"
+        (enviarDados)="receberDados($event)"
+      />
+      } @else {
+      <app-code-highlighter-request
+        [apiTipo]="apiType()"
+        (enviarDados)="receberDados($event)"
+      />
+    }
+<!--        body response-->
+      <app-code-highlighter-response
+        [apiTipo]="apiType()"
+      />
+      </div>
+    </div>
+  </div>
+</div>

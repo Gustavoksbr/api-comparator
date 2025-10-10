@@ -1,0 +1,65 @@
+<section>
+  <div class="descricao">
+    <p>Compare as diferenças de requisições entre alguns estilos arquiteturais baseados no protocolo HTTP - REST, GRAPHQL e SOAP - em um sistema de cursos</p>
+  </div>
+
+    <app-front-form-container>
+
+    </app-front-form-container>
+  <div class="api-tipos">
+    <app-api-type
+            [apiType]="'REST'"
+    />
+    <app-api-type
+            [apiType]="'GRAPHQL'"
+    />
+    <app-api-type
+            [apiType]="'SOAP'"
+    />
+  </div>
+  <div class="comparison-container">
+
+    <div class="api-card rest">
+      <h3>REST</h3>
+      <p>Fornece uma forma simples e padronizada de gerenciar recursos pela web. Uma boa opção para CRUD</p>
+      <ul>
+        <li> Utiliza o protocolo <b>HTTP</b>.</li>
+        <li> Métodos principais: <b>GET, POST, PUT e DELETE</b> (entre outros).</li>
+        <li> URLs são <b>dinâmicas</b> (podem conter <i>path params</i> ou <i>query params</i>).</li>
+        <li> Usa o formato <b>JSON</b>. No header da requisição, o Content-Type deve ser <b>application/json</b>.</li>
+        <li> Status codes comuns: <code>200, 201, 204, 400, 401, 403, 404, 409, 500...</code></li>
+        <li> Os atributos retornados são definidos pela própria API.</li>
+      </ul>
+    </div>
+
+    <div class="api-card graphql">
+      <h3>GraphQL</h3>
+      <p>Permite que o cliente defina exatamente quais dados deseja receber, reduzindo o número de requisições e evitando sobrecarga de dados. Uma boa opção para consultar dados complexos</p>
+      <ul>
+        <li> Utiliza o protocolo <b>HTTP</b>.</li>
+        <li> Método: apenas <b>POST</b>.</li>
+        <li> URL é <b>fixa</b>; o que varia é o <b>corpo da requisição</b> (<i>body</i>).</li>
+        <li> Possui sua própria <b>linguagem de consulta</b>. O Content-Type no header deve ser <b>application/graphql</b>.</li>
+        <li> Status code: normalmente <b>200</b>. Em caso de erro, o retorno contém um objeto com o campo <code>"errors": [...]</code>.</li>
+        <li> Permite ao cliente escolher exatamente quais <b>atributos</b> deseja receber na resposta.</li>
+      </ul>
+    </div>
+
+    <div class="api-card soap">
+      <h3>SOAP</h3>
+      <p>
+        Possui um padrão rigoroso de mensagens e é geralmente utilizado em integrações entre sistemas de back-end. Atualmente é considerado obsoleto, sendo recomendado apenas em sistemas legados ou para integração com eles.
+      </p>
+      <ul>
+        <li> Geralmente utiliza <b>HTTP</b>, mas pode usar outros protocolos de comunicação, como <b>SMTP</b> ou <b>JMS</b> (<i>Java Message Service</i>).</li>
+        <li> Método: apenas <b>POST</b>.</li>
+        <li> URL é <b>fixa</b>; o que muda é o <b>corpo da requisição</b> (<i>body</i>).</li>
+        <li> Utiliza o formato <b>XML</b>. O Content-Type no header deve ser <b>text/xml</b>.</li>
+        <li> Status codes comuns: <b>200</b> (sucesso) e <b>500</b> (qualquer tipo de erro).</li>
+        <li> Os atributos retornados são definidos pela própria API.</li>
+      </ul>
+    </div>
+
+
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<div class="codigo-container borda ">
+  <div class="request-response-header">
+    <p>Body Request</p>
+    <div class="quadrado-cinza">
+      <div>Content-Type:</div >
+      <div> {{this.contentType()}}</div>
+    </div>
+  </div>
+
+      <div class="code-content">
+
+      <textarea highlight-js  [lang]="'{{language()}}'">
+    {{bodyRequest()}}
+    </textarea>
+      </div>
+</div>

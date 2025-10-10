@@ -1,0 +1,99 @@
+section{
+  min-height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+
+
+.descricao{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-color: #f9f9f9;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  @media (min-width: 760px) {
+    padding: 20px;
+  }
+}
+
+.api-tipos{
+  /*box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1), -5px 0 5px rgba(0, 0, 0, 0.1);*/
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.comparison-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  gap: 20px;
+}
+
+.api-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  li {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  p{
+    font-size: 14px;
+  }
+}
+
+.api-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.api-card h3 {
+  text-align: center;
+}
+.rest {
+  h3{
+    color: var(--rest);
+  }
+  border: 2px solid var(--rest);
+  ul li::marker {
+    color: var(--rest);
+  }
+}
+.graphql {
+  h3{
+    color: var(--graphql);
+  }
+  border: 2px solid var(--graphql);
+  ul li::marker {
+    color: var(--graphql);
+  }
+}
+.soap {
+  h3{
+    color: var(--soap);
+  }
+  border: 2px solid var(--soap);
+  ul li::marker {
+    color: var(--soap);
+  }
+}

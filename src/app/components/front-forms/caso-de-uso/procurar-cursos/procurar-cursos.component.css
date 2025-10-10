@@ -1,0 +1,29 @@
+
+
+.selecionar-tipo-procura{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+button{
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.nao-selecionado:hover{
+  background: hsl(217.2 91.2% 59.8% / 0.2);
+  color: #034288;
+}
+
+.selecionado{
+  background-color: #0056b3;
+  color: white;
+}
+
+.nao-selecionado{
+  background-color: #e1e1e1;
+  color: black;
+}

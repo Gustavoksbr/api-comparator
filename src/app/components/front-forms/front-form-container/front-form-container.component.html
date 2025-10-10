@@ -1,0 +1,39 @@
+<div class="escolher-caso-de-uso-container">
+<div class="escolher-caso-de-uso-content">
+@for (caso of casoDeUsoTextos; track caso) {
+  <button
+    class="botao-caso-de-uso"
+[ngClass]="{
+  'selecionado': cursoSignalService.casoDeUsoSelecionado() === caso.casoDeUso,
+  'nao-selecionado': cursoSignalService.casoDeUsoSelecionado() !== caso.casoDeUso
+}"
+    (click)="selecionarCasoDeUso(caso.casoDeUso)"
+  >
+    {{ caso.texto }}
+  </button>
+}
+</div>
+</div>
+<div class="forms-caso-de-uso-container">
+@switch (cursoSignalService.casoDeUsoSelecionado()) {
+  @case ('getAll') {
+
+  }
+  @case ('procurar') {
+    <app-procurar-cursos
+
+    ></app-procurar-cursos>
+  }
+  @case ('criar') {
+    <app-criar-cursos
+
+    />
+  }
+  @case ('alterar') {
+    <app-atualizar-cursos></app-atualizar-cursos>
+  }
+  @case ('deletar') {
+    <app-deletar-cursos></app-deletar-cursos>
+  }
+}
+</div>
