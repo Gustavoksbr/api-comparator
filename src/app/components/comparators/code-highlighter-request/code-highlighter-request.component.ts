@@ -180,7 +180,7 @@ export class CodeHighlighterRequestComponent {
       case 'getAll':
         return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:cur="http://exemplo.com/cursos">
+               xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
     <soap:Body>
         <cur:listCursosRequest/>
@@ -190,7 +190,7 @@ export class CodeHighlighterRequestComponent {
         if (this.cursoSignalService.requestCursos.procurar().isFindingByCodigo) {
             return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:cur="http://exemplo.com/cursos">
+               xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
     <soap:Body>
         <cur:getCursoRequest>
@@ -201,7 +201,7 @@ export class CodeHighlighterRequestComponent {
         }else {
           return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:cur="http://exemplo.com/cursos">
+               xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
     <soap:Body>
         <cur:procurarCursosRequest>
@@ -216,7 +216,7 @@ export class CodeHighlighterRequestComponent {
       case 'criar':
         return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:cur="http://exemplo.com/cursos">
+               xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
     <soap:Body>
         <cur:createCursoRequest>
@@ -230,7 +230,7 @@ export class CodeHighlighterRequestComponent {
       case 'alterar':
         return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:cur="http://exemplo.com/cursos">
+               xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
     <soap:Body>
         <cur:updateCursoRequest>
@@ -245,7 +245,7 @@ export class CodeHighlighterRequestComponent {
       case 'deletar':
         return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:cur="http://exemplo.com/cursos">
+               xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
     <soap:Body>
         <cur:deleteCursoRequest>
