@@ -35,7 +35,7 @@ type GraphqlBodyResponse = {
     NgStyle
   ],
   templateUrl: './api-type.component.html',
-  styleUrl: './api-type.component.css'
+  styleUrls: ['./api-type.component.css','./graphql-select-body-response.css'],
 })
 export class ApiTypeComponent {
   apiType = input<'REST' | 'SOAP' | 'GRAPHQL'>('REST');

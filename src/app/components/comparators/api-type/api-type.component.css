@@ -184,70 +184,7 @@
     transform: rotate(360deg);
   }
 }
-.selecionar-atributos-para-response-graphql-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.selecionar-atributos-para-response-graphql-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 600px;
-  transition: all 0.3s ease;
-}
 
-.selecionar-atributos-para-response-graphql-content label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  color: #b3005e;
-  background: #ffe6f0;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.8rem;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-  max-width: 150px;
-}
-
-.selecionar-atributos-para-response-graphql-content label:hover {
-  background: #ffcce0;
-  transform: translateY(-2px);
-}
-
-.selecionar-atributos-para-response-graphql-content input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 1.1rem;
-  height: 1.1rem;
-  border: 2px solid #ff69b4;
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-}
-
-.selecionar-atributos-para-response-graphql-content input[type="checkbox"]:checked {
-  background-color: #ff69b4;
-  border-color: #ff69b4;
-}
-
-.selecionar-atributos-para-response-graphql-content input[type="checkbox"]:checked::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
 
 @media (max-width: 480px) {
   .selecionar-atributos-para-response-graphql-content {
