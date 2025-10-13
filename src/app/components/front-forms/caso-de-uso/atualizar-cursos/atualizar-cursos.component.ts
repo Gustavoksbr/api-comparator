@@ -20,20 +20,12 @@ export class AtualizarCursosComponent{
     this.formulario.valueChanges.subscribe((valores: CursoRequest) => {
       this.cursoSignalService.requestCursos.alterar.update(()=>valores);
     });
-
-    this.formulario.get('cargaHoraria')?.valueChanges.subscribe((valor: number) => {
-
-      const somenteNumeros = String(valor).replace(/\D/g, ''); // remove tudo que não é número
-      const numero = Math.min(Number(somenteNumeros || 0), 300); // limita a 300
-
-      if (valor !== numero) {
-        this.formulario.get('cargaHoraria')?.setValue(numero, { emitEvent: false });
+    this.formulario.get('cargaHoraria')?.valueChanges.subscribe((valor: string) => {
+      if (valor && valor.toString().length > 3) {
+        this.formulario.get('cargaHoraria')?.setValue(valor.toString().slice(0, 3), { emitEvent: false });
       }
     });
   }
-  falso = false;
-  codigoValor = computed(() => this.cursoSignalService.requestCursos.alterar().codigo ?? '');
-  codigoPreenchido = computed(() => this.cursoSignalService.requestCursos.alterar().codigo!.trim().length > 0);
   formulario: FormGroup = new FormGroup({
     codigo: new FormControl('',[
       Validators.required,

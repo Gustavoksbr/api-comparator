@@ -19,14 +19,15 @@ export class ProcurarCursosComponent {
   constructor(public cursoSignalService: CursoSignalService) {
 
     this.formulario.patchValue(this.cursoSignalService.requestCursos.procurar());
-    this.formulario.get('minCargaHoraria')?.valueChanges.subscribe((valor: number) => {
-      if (valor > 300) {
-        this.formulario.get('minCargaHoraria')?.setValue(300, { emitEvent: false });
+    this.formulario.get('minCargaHoraria')?.valueChanges.subscribe((valor: string) => {
+      if (valor && valor.toString().length > 3) {
+        this.formulario.get('minCargaHoraria')?.setValue(valor.toString().slice(0, 3), { emitEvent: false });
       }
     });
-    this.formulario.get('maxCargaHoraria')?.valueChanges.subscribe((valor: number) => {
-      if (valor > 300) {
-        this.formulario.get('maxCargaHoraria')?.setValue(300, { emitEvent: false });
+
+    this.formulario.get('maxCargaHoraria')?.valueChanges.subscribe((valor: string) => {
+      if (valor && valor.toString().length > 3) {
+        this.formulario.get('maxCargaHoraria')?.setValue(valor.toString().slice(0, 3), { emitEvent: false });
       }
     });
     this.formulario.valueChanges.subscribe((valores: {

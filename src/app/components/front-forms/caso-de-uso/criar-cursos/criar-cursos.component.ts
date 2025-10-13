@@ -20,8 +20,8 @@ export class CriarCursosComponent {
       this.cursoSignalService.requestCursos.criar.update(()=>valores);
     });
     this.formulario.get('cargaHoraria')?.valueChanges.subscribe((valor: number) => {
-      if (valor > 300) {
-        this.formulario.get('cargaHoraria')?.setValue(300, { emitEvent: false });
+      if (valor && valor.toString().length > 3) {
+        this.formulario.get('cargaHoraria')?.setValue(Number(valor.toString().slice(0, 3)), { emitEvent: false });
       }
     });
   }

@@ -44,6 +44,11 @@
   transform: rotate(180deg);
 }
 
+.api-type-header:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.02);
+}
+
 .api-type-main{
   /*background: linear-gradient( #d2fdd2, #e0e0e0);*/
   display: grid;
@@ -72,22 +77,23 @@
 
 
 
-.metodo-url-executar-container {
+.metodo-executar-url-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   width: 100%;
-  margin: 30px 0;
+  margin-top: 30px;
 }
 
 .metodo-executar-container {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+
 }
 
 .metodo-content {
@@ -124,40 +130,40 @@
 }
 
 .url-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   border: 1px solid #ccc;
   background-color: #f5f5f5;
-  padding: 8px 12px;
+  /*padding: 8px 12px;*/
   width: 90%;
   max-width: 700px;
-  word-wrap: break-word;
+  /*word-wrap: break-word;*/
   text-align: center;
+
+  font-size: 13px;
+  div{
+    margin: 0;
+    padding: 6px;
+    /*text-align: center;*/
+    p{
+      padding: 5px;
+    }
+  }
 }
 .url-texto {
-  font-size: 13px;
-  color: #333;
-  background-color: #eaeaea;
-  border-radius: 6px;
-  padding: 6px;
-  margin: 0;
+  /*color: #333;*/
+  /*background-color: #eaeaea;*/
+  width: 80%;
+  word-break: break-all;
+  /*align-items: start;*/
+  p{
+    background-color: #eaeaea;
+    border-radius: 6px;
+  }
 }
-
-/*@media (max-width: 600px) {*/
-/*  .metodo-executar-container {*/
-/*    flex-direction: row;*/
-/*    gap: 6px;*/
-/*  }*/
-
-/*  .url-content {*/
-/*    width: 100%;*/
-/*    font-size: 12px;*/
-/*  }*/
-
-/*  .url-texto {*/
-/*    word-break: break-all;*/
-/*  }*/
-/*}*/
-
 
 .loader {
   width: 30px;
@@ -192,8 +198,6 @@
   gap: 1rem;
   width: 100%;
   max-width: 600px;
-  /*margin-top: 1rem;*/
-  padding: 1.2rem;
   transition: all 0.3s ease;
 }
 
@@ -262,12 +266,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  /*gap: 10px;*/
+  /*margin-top: 10px;*/
+  gap: 20px;
   width: 100%;
+  padding-block: 20px;
 }
 
 app-code-highlighter-request, app-code-highlighter-response{
   display: block;
-  width: 100%;
+  width: 90%;
+  align-self: center;
+
 }
+
+
