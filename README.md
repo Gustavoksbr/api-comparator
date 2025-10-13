@@ -19,6 +19,14 @@ O projeto consome a api https://cursos-api-7vr6.onrender.com, cujo código está
 
 ---
 
+## 🤔 Como Usar
+
+1. Escolha um **caso de uso** no topo da página (Listar, Criar, Atualizar, etc.).
+2. Preencha os campos do formulário.
+3. Observe como as requisições **REST**, **GraphQL** e **SOAP** são geradas automaticamente.
+4. Clique em **Executar** em cada comparador para fazer a chamada a api e ver o *body response* correspondente.
+
+---
 
 
 ## ⚙️ Principais Funcionalidades
@@ -100,15 +108,6 @@ Acesse no navegador:
 ```
 http://localhost:4200
 ```
-
----
-
-## 🤔 Como Usar
-
-1. Escolha um **caso de uso** no topo da página (Listar, Criar, Atualizar, etc.).
-2. Preencha os campos do formulário.
-3. Observe como as requisições **REST**, **GraphQL** e **SOAP** são geradas automaticamente.
-4. Clique em **Executar** em cada comparador para ver o *body response* correspondente.
 
 ---
 
