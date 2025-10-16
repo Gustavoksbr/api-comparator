@@ -4,14 +4,14 @@
     <label for="codigo">Código:</label>
     <input id="codigo" formControlName="codigo"  type="text" [maxLength]="15"/>
     <div class="contador-caracteres" >
-      {{ this.cursoSignalService.requestCursos.procurar().codigo?.length || 0 }}/15
+      {{ this.cursoSignalService.requestCursos.criar().codigo?.length || 0 }}/15
     </div>
   </div>
   <div class="campo">
     <label for="titulo">Título:</label>
     <input id="titulo" type="text" formControlName="titulo" [maxLength]="30" />
     <div class="contador-caracteres" >
-      {{ this.cursoSignalService.requestCursos.procurar().titulo?.length || 0 }}/30
+      {{ this.cursoSignalService.requestCursos.criar().titulo?.length || 0 }}/30
     </div>
   </div>
   <div class="campo">
@@ -19,7 +19,7 @@
     <textarea id="descricao" type="text" formControlName="descricao" [maxLength]="100">
     </textarea>
     <div class="contador-caracteres" >
-      {{ this.cursoSignalService.requestCursos.procurar().descricao?.length || 0 }}/100
+      {{ this.cursoSignalService.requestCursos.criar().descricao?.length || 0 }}/100
     </div>
   </div>
   <div class="campo">

@@ -49,7 +49,6 @@ this.cursoSignalService.requestCursos.procurar.update(() => ({
     });
   }
 
-
   formulario: FormGroup = new FormGroup({
     codigo: new FormControl('',[
       Validators.maxLength(15),
