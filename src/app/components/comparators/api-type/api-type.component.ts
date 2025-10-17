@@ -39,7 +39,7 @@ type GraphqlBodyResponse = {
 })
 export class ApiTypeComponent {
   apiType = input<'REST' | 'SOAP' | 'GRAPHQL'>('REST');
-  isOpen = signal(true);
+  isOpen = signal(false);
 
 public executar(casoDeUso : CasoDeUso, tipoApi : ApiTipo, bodyRequest : string, url : string, httpMetodo : HttpMetodo) {
 

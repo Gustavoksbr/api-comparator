@@ -16,7 +16,7 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #fafafa;
+  background-color: var(--hljs-bg);
   overflow: auto;
   font-size: 10px;
   max-height: 300px;
@@ -30,15 +30,6 @@
   }
 }
 
-
-/*.borda{*/
-/*  border-radius: 8px;*/
-/*  !*box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.1);*!*/
-/*  border: 1px solid #ccc;*/
-/*  !*padding: 5px;*!*/
-/*  !*margin: 10px;*!*/
-/*}*/
-
 .request-response-header{
   width: 90%;
   display: grid;
@@ -46,13 +37,11 @@
   padding: 10px;
   height: 80px;
 }
-.status-code-number{
-  height: 18px;
-}
+
 .quadrado-cinza{
   font-size: 14px;
   height: 80px;
-  background-color: #d3d3d3;
+  background-color: var(--background-header-footer-color);
   border-radius: 8px;
   width: 120px;
   padding: 0 5px;

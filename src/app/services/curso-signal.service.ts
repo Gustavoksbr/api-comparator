@@ -24,10 +24,10 @@ export class CursoSignalService {
 
    public casoDeUsoSelecionado = signal<CasoDeUso>('getAll');
   public requestCursos: Record<CasoDeUso,  WritableSignal<CursoRequest>> = {
-    getAll: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', cargaHoraria: 0 }),
-    procurar: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', minCargaHoraria: 0, maxCargaHoraria: 300, isFindingByCodigo: true }),
-    criar: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', cargaHoraria: 0 }),
-    alterar: signal<CursoRequest>({ codigo: '', codigoNovo:'', titulo: '', descricao: '', cargaHoraria: 0 }),
+    getAll: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', cargaHoraria: null }),
+    procurar: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', minCargaHoraria: null, maxCargaHoraria: null, isFindingByCodigo: true }),
+    criar: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', cargaHoraria: null }),
+    alterar: signal<CursoRequest>({ codigo: '', codigoNovo:'', titulo: '', descricao: '', cargaHoraria: null }),
     deletar: signal<CursoRequest>({ codigo: '' }),
   };
   public cursoAtual = computed(() => this.requestCursos[this.casoDeUsoSelecionado()]());

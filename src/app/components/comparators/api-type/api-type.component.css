@@ -8,13 +8,13 @@
   min-width: 100%;
 }
 .api-type-header-rest{
-  background-image: linear-gradient( var(--rest) 10%, darkgray);
+  background-image: linear-gradient( var(--rest) var(--porcentagem-header-comparator), darkgray);
 }
 .api-type-header-soap{
-  background-image: linear-gradient( var(--soap) 10%, darkgray);
+  background-image: linear-gradient( var(--soap) var(--porcentagem-header-comparator), darkgray);
 }
 .api-type-header-graphql{
-  background-image: linear-gradient( var(--graphql) 10%, darkgray);
+  background-image: linear-gradient( var(--graphql) var(--porcentagem-header-comparator), darkgray);
 }
 .api-type-header {
   padding: 0 10px;
@@ -85,6 +85,7 @@
   gap: 20px;
   width: 100%;
   margin-top: 30px;
+
 }
 
 .metodo-executar-container {
@@ -93,7 +94,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .metodo-content {
@@ -136,7 +136,7 @@
   justify-content: center;
   border-radius: 8px;
   border: 1px solid #ccc;
-  background-color: #f5f5f5;
+  background-color: var(--background-color);
   /*padding: 8px 12px;*/
   width: 90%;
   max-width: 700px;
@@ -160,7 +160,7 @@
   word-break: break-all;
   /*align-items: start;*/
   p{
-    background-color: #eaeaea;
+    background-color: var(--background-divs-color);
     border-radius: 6px;
   }
 }
@@ -168,7 +168,7 @@
 .loader {
   width: 30px;
   height: 30px;
-  border: 3px solid black;
+  border: 3px solid var(--text-color);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;

@@ -52,8 +52,7 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "public/vendor/atom-one-light.min.css"
+              "src/styles.css"
             ],
             "scripts": [
               "public/vendor/atom-one.min.js"
@@ -113,8 +112,7 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "public/vendor/atom-one-light.min.css"
+              "src/styles.css"
             ],
             "scripts": [
               "public/vendor/atom-one.min.js"

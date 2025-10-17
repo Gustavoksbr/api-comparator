@@ -5,20 +5,8 @@ html,body {
   padding: 0;
   height: 100%;
   font-family: sans-serif;
-
-}
-
-.teste{
-  width: 100%;
-  background-color: red;
-  height: 50px;
-  overflow: auto;
-}
-
-:root {
-  --rest: #4CAF50;
-  --graphql: hotpink;
-  --soap: burlywood;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .box-shadow-rest {
@@ -29,4 +17,184 @@ html,body {
 }
 .box-shadow-soap {
   box-shadow: 0px 0px 10px 10px rgba(222, 184, 135, 0.3);
+}
+
+/*tema escuro (padrao): */
+:root {
+  --rest: #4CAF50;
+  --graphql: hotpink;
+  --soap: burlywood;
+
+  --porcentagem-header-comparator: 70%;
+
+  --status-code-color-2xx: #4CAF50; /* Verde */
+  --status-code-color-4xx: #FF9800; /* Laranja */
+  --status-code-color-5xx: #fb5c50; /* Vermelho */
+
+  --background-color: #232121;
+  --text-color: white;
+  --background-header-footer-color: #818285;
+  --background-divs-color: #505051;
+  --scroll-color: gray;
+  --scroll-hover-color: lightgray;
+  img{
+    filter: invert(1);
+  }
+  /*atom-one-dark-min.css*/
+  --hljs-color: #abb2bf;
+  --hljs-bg: #282c34;
+  --hljs-comment: #5c6370;
+  --hljs-keyword: #c678dd;
+  --hljs-section: #e06c75;
+  --hljs-literal: #56b6c2;
+  --hljs-string: #98c379;
+  --hljs-attr: #d19a66;
+  --hljs-symbol: #61aeee;
+  --hljs-built_in: #e6c07b;
+  }
+
+/*tema claro: */
+[data-theme="claro"]{
+  --rest: #4CAF50;
+  --graphql: hotpink;
+  --soap: burlywood;
+
+  --porcentagem-header-comparator: 10%;
+
+
+
+  --status-code-color-2xx: #4CAF50; /* Verde */
+  --status-code-color-4xx: #ed9b21; /* Laranja */
+  --status-code-color-5xx: #f44336; /* Vermelho */
+
+  --background-color: #fafafa;
+  --text-color: black;
+  --background-header-footer-color: #c5c6ca ;
+  --background-divs-color: #ededef;
+  --scroll-color: lightgray;
+  --scroll-hover-color: gray;
+
+  img{
+    filter: none;
+  }
+
+  /*atom-one-light-min.css*/
+  --hljs-color: #383a42;
+  --hljs-bg: #fafafa;
+  --hljs-comment: #a0a1a7;
+  --hljs-keyword: #a626a4;
+  --hljs-section: #e45649;
+  --hljs-literal: #0184bb;
+  --hljs-string: #50a14f;
+  --hljs-attr: #986801;
+  --hljs-symbol: #4078f2;
+  --hljs-built_in: #c18401;
+}
+
+/* tirei os botoes de aumentar/diminuir */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Estilização da scrollbar para todos os elementos, exceto html e body (todos, exceto o q fica na direita da pagina) */
+*:not(html):not(body)::-webkit-scrollbar {
+  scrollbar-width: thin;
+  background-color: var(--background-color);
+
+}
+*:not(html):not(body)::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--scroll-color);
+
+}
+*:not(html):not(body)::-webkit-scrollbar-thumb:hover {
+  background-color:var(--scroll-hover-color);
+}
+
+
+/*todos os elementos de baixo sao para o highlight.js*/
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+
+.hljs {
+  color: var(--hljs-color);
+  background: var(--hljs-bg);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--hljs-comment);
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: var(--hljs-keyword);
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: var(--hljs-section);
+}
+
+.hljs-literal {
+  color: var(--hljs-literal);
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: var(--hljs-string);
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: var(--hljs-attr);
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: var(--hljs-symbol);
+}
+
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: var(--hljs-built_in);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
 }

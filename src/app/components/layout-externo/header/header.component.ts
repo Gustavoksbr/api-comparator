@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, WritableSignal} from '@angular/core';
+import {TemaClaroEscuroSignalService} from '../../../services/tema-claro-escuro-signal.service';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +10,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor(private temaService: TemaClaroEscuroSignalService) {
+   this.escuro = this.temaService.escuro;
+  }
+  public escuro: WritableSignal<boolean>;
+  changeTheme() {
+
+    this.temaService.changeTheme();
+  }
 }

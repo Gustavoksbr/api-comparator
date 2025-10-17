@@ -49,13 +49,17 @@ O componente **GraphQL** possui um **checklist** para que o usuário escolha qua
 
 ### 🧠 Reatividade com Signals
 
-O serviço `curso-signal.service.ts` utiliza **Angular Signals** para manter os dados compartilhados entre os componentes sincronizados. Assim, qualquer mudança feita no formulário é refletida automaticamente nos comparadores.
+O serviço [curso-signal.service.ts](./src/app/services/curso-signal.service.ts) utiliza **Angular Signals** para manter os dados compartilhados entre os componentes sincronizados. Assim, qualquer mudança feita no formulário é refletida automaticamente nos comparadores.
 
 ### 📡 Comunicação com o Back-end
 
-O serviço `curso-api.service.ts` é responsável por fazer as verdadeiras requisições HTTP para o back-end.
+O serviço [curso-api.service.ts](./src/app/services/curso-api.service.ts) é responsável por fazer as verdadeiras requisições HTTP para o back-end.
+
+### ☀️🌙 Tema Claro/Escuro
+O usuário pode alternar entre tema claro e escuro, cujas variáveis das cores são definidas em [./src/styles.css](./src/styles.css). Por padrão, o tema é escuro
 
 ---
+
 
 ## 🧩 Estrutura da Aplicação
 
@@ -97,8 +101,7 @@ npm install
 ```
 
 
-### 4️⃣ Executar a aplicação
-
+### 3️⃣ Executar a aplicação
 ```bash
 ng serve
 ```
@@ -118,8 +121,15 @@ Utilizei a biblioteca ngx-highlight-js e arquivos de css e js específicos para 
 
 Eles servem especificamente para colorir o código das requisições e respostas, parecendo um editor de código
 
-- [atom-one-light.min.css](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/atom-one-light.min.css)
 - [highlight.min.js](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js)
+- [atom-one-dark.min.css](https://codepen.io/zsty/pen/gxxQLe)
+- [atom-one-light.min.css](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/atom-one-light.min.css)
+
+
+O  `atom-one.min.js` deixei em [./public/vendor/atom-one.min.js](./public/vendor/atom-one.min.js)
+
+Eu extraí as propriedades dos arquivos css e deixei em [./src/styles.css](./src/styles.css), com
+`atom-one-dark.min.css` sendo representado pelo tema escuro e `atom-one-light.min.css` pelo tema claro
 
 ---
 
@@ -127,7 +137,6 @@ Eles servem especificamente para colorir o código das requisições e respostas
 
 - Adicionar testes unitários e de integração.
 - Adicionar mais campos para os cursos (ex: instrutor, nível, categoria, etc).
-- Adicionar escolha de tema claro/escuro. (já importei o arquivo [atom-one-dark.min.css](https://codepen.io/zsty/pen/gxxQLe) do Daniel Gamage para isso)
 - Adicionar autenticação e autorização.
 - Simular um front end real de um site de cursos, e não apenas um comparador de APIs
 

@@ -11,12 +11,12 @@
         <div class="status-code-number"
              [ngStyle]="{
                   'color':
-                    (statusCode() ?? 0) >= 100 && (statusCode() ?? 0) <= 199 ? 'black' :
-                    (statusCode() ?? 0) >= 200 && (statusCode() ?? 0) <= 299 ? 'green' :
-                    (statusCode() ?? 0) >= 300 && (statusCode() ?? 0) <= 399 ? 'black' :
-                    (statusCode() ?? 0) >= 400 && (statusCode() ?? 0) <= 499 ? 'orange' :
-                    (statusCode() ?? 0) >= 500 && (statusCode() ?? 0) <= 599 ? 'red' :
-                    'black'
+                    (statusCode() ?? 0) >= 100 && (statusCode() ?? 0) <= 199 ? 'var(--text-color)' :
+                    (statusCode() ?? 0) >= 200 && (statusCode() ?? 0) <= 299 ? 'var(--status-code-color-2xx)' :
+                    (statusCode() ?? 0) >= 300 && (statusCode() ?? 0) <= 399 ? 'var(--text-color)' :
+                    (statusCode() ?? 0) >= 400 && (statusCode() ?? 0) <= 499 ? 'var(--status-code-color-4xx)' :
+                    (statusCode() ?? 0) >= 500 && (statusCode() ?? 0) <= 599 ? 'var(--status-code-color-5xx)' :
+                    'var(--text-color)'
                 }">
           {{ statusCode() }}
         </div>

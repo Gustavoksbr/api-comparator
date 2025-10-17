@@ -108,8 +108,8 @@ export class CodeHighlighterRequestComponent {
             return `{
     "codigoNovo": "${curso.codigoNovo}",
     "titulo": "${curso.titulo}",
-    "descricao": "${curso.descricao}",
-    "cargaHoraria": ${curso.cargaHoraria}
+    "descricao": "${curso.descricao}"${curso.cargaHoraria ? `,
+    "cargaHoraria": ${curso.cargaHoraria}` : ''}
 }`;
         case 'deletar':
             return `// sem body request`;
@@ -136,11 +136,12 @@ export class CodeHighlighterRequestComponent {
     }`;
         }else {
           return `query {
-        procurarCursos( titulo: "${curso.titulo}",
-        descricao: "${curso.descricao}",
-        minCargaHoraria: ${curso.minCargaHoraria},
-        maxCargaHoraria: ${curso.maxCargaHoraria}
-        ) {
+        listCursos(
+          titulo: "${curso.titulo}",
+          descricao: "${curso.descricao}"${curso.minCargaHoraria ? `,
+          minCargaHoraria: ${curso.minCargaHoraria}` : ''}${curso.maxCargaHoraria ? `,
+          maxCargaHoraria: ${curso.maxCargaHoraria}` : ''}
+          ) {
             ${this.graphqlBodyResponse().codigo ? '\tcodigo' : ''}${this.graphqlBodyResponse().titulo ?
             '\n\t\ttitulo' : ''}${this.graphqlBodyResponse().descricao ?
             '\n\t\tdescricao' : ''}${this.graphqlBodyResponse().cargaHoraria ?
@@ -165,8 +166,8 @@ export class CodeHighlighterRequestComponent {
         codigo: "${curso.codigo}",
         codigoNovo: "${curso.codigoNovo}",
         titulo: "${curso.titulo}",
-        descricao: "${curso.descricao}",
-        cargaHoraria: ${curso.cargaHoraria}
+        descricao: "${curso.descricao}"${curso.cargaHoraria ? `,
+        cargaHoraria: ${curso.cargaHoraria}` : ''}
     ) {
         ${this.graphqlBodyResponse().codigo ? 'codigo' : ''}${this.graphqlBodyResponse().titulo ? '\n\ttitulo' : ''}${this.graphqlBodyResponse().descricao ? '\n\tdescricao' : ''}${this.graphqlBodyResponse().cargaHoraria ? '\n\tcargaHoraria' : ''}
         }\n}`;
@@ -188,7 +189,7 @@ export class CodeHighlighterRequestComponent {
 </soap:Envelope>`;
       case 'procurar':
         if (this.cursoSignalService.requestCursos.procurar().isFindingByCodigo) {
-            return `<?xml version="1.0" encoding="UTF-8"?>
+          return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
                xmlns:cur="https://cursos-api-7vr6.onrender.com">
     <soap:Header/>
@@ -198,7 +199,7 @@ export class CodeHighlighterRequestComponent {
         </cur:getCursoRequest>
     </soap:Body>
 </soap:Envelope>`;
-        }else {
+        } else {
           return `<?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
                xmlns:cur="https://cursos-api-7vr6.onrender.com">
@@ -207,11 +208,13 @@ export class CodeHighlighterRequestComponent {
         <cur:procurarCursosRequest>
             <cur:titulo>${curso.titulo}</cur:titulo>
             <cur:descricao>${curso.descricao}</cur:descricao>
-            <cur:minCargaHoraria>${curso.minCargaHoraria}</cur:minCargaHoraria>
-            <cur:maxCargaHoraria>${curso.maxCargaHoraria}</cur:maxCargaHoraria>
+            <cur:minCargaHoraria>${curso.minCargaHoraria ?? ""}</cur:minCargaHoraria>
+            <cur:maxCargaHoraria>${curso.maxCargaHoraria ?? ""}</cur:maxCargaHoraria>
         </cur:procurarCursosRequest>
     </soap:Body>
-</soap:Envelope>`;}
+</soap:Envelope>`;
+        }
+
 
       case 'criar':
         return `<?xml version="1.0" encoding="UTF-8"?>
@@ -223,7 +226,7 @@ export class CodeHighlighterRequestComponent {
             <cur:codigo>${curso.codigo}</cur:codigo>
             <cur:titulo>${curso.titulo}</cur:titulo>
             <cur:descricao>${curso.descricao}</cur:descricao>
-            <cur:cargaHoraria>${curso.cargaHoraria}</cur:cargaHoraria>
+            <cur:cargaHoraria>${curso.cargaHoraria ?? ""}</cur:cargaHoraria>
         </cur:createCursoRequest>
     </soap:Body>
 </soap:Envelope>`;
@@ -238,7 +241,7 @@ export class CodeHighlighterRequestComponent {
             <cur:codigoNovo>${curso.codigoNovo}</cur:codigoNovo>
             <cur:titulo>${curso.titulo}</cur:titulo>
             <cur:descricao>${curso.descricao}</cur:descricao>
-            <cur:cargaHoraria>${curso.cargaHoraria}</cur:cargaHoraria>
+            <cur:cargaHoraria>${curso.cargaHoraria ?? ""}</cur:cargaHoraria>
         </cur:updateCursoRequest>
     </soap:Body>
 </soap:Envelope>`;
