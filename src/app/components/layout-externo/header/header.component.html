@@ -1,4 +1,8 @@
 <header>
 <h1>Api Comparator</h1>
-  <img [src] = "'images/tema-'+(escuro() ? 'claro' : 'escuro')+'.svg'" alt="Tema" class="tema-icone" (click)="changeTheme()" [title]="escuro() ? 'Mude para o tema claro' : 'Mude para o tema escuro' ">
+  <img [src] = "'images/tema-'+(escuro() ? 'claro' : 'escuro')+'.svg'" alt="Tema" class="tema-icone"
+       (click)="changeTheme()"
+       [title]="escuro() ? 'Mude para o tema claro' : 'Mude para o tema escuro' "
+        data-test-id="botao-mudar-tema"
+  >
 </header>

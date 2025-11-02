@@ -80,8 +80,6 @@ if (this.carregando()){
             this.cursoSignalService.respostasDaApi[casoDeUso][tipoApi].statusCode.set(error.status || 500);
           }
         });
-        console.log('Finalizado o método executar');
-        console.log("respostas:"+ this.cursoSignalService.respostasDaApi[casoDeUso][tipoApi].bodyResponse());
 }
   toggle() {
     this.isOpen.set(!this.isOpen());

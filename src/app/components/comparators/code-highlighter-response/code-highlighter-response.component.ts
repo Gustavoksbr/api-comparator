@@ -14,7 +14,7 @@ import {ApiTipo} from '../../../models/Models';
   styleUrls: ['./code-highlighter-response.component.css','../code-content.css']
 })
 export class CodeHighlighterResponseComponent {
-  constructor(protected cursoSignalService : CursoSignalService) {
+  constructor(public cursoSignalService : CursoSignalService) {
   }
   public linguagem = computed(() => {
     switch (this.apiType()) {

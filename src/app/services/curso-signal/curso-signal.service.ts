@@ -126,9 +126,4 @@ public respostasDaApi: RespostasDaApi = {
     }
   }
 };
-  constructor() {
-    effect(() => {
-      console.log("Body repsonse atual: ", this.respostasDaApi.getAll['REST'].bodyResponse() );
-    });
-  }
 }

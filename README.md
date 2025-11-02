@@ -115,9 +115,11 @@ O projeto possui **testes unitários** e de integração com **Jest** e **testes
 
 Testes unitários e de integração de serviços e componentes
 
-Testei isoladamente os formularios de cada caso de uso (validando valores minimos e maximos), mockando o serviço de signal para manter o teste isolado
-
-Também testei a funcionalidade de mudar o tema claro/escuro. Resolvi fazer um teste de integração, utilizando o verdadeiro servico de mudar tema claro-escuro de  em vez de mockar.
+Criei testes das seguintes funcionalidades:
+ 
+- a permissão de campos inválidos dos formularios em ``src/app/components/front-forms/caso-de-uso``
+- formatação e exibição dos bodies responses em ``src/app/components/comparators/code-highlighter-response/code-highlighter-response.component.spec.ts``
+- mudar tema claro/escuro em ``src/app/components/layout-externo/header/header.component.spec.ts``. Nesse, resolvi fazer um teste de integração, utilizando o verdadeiro servico de mudar tema claro-escuro de em vez de mockar.
 
 Para rodar os testes Jest:
 

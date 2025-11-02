@@ -24,7 +24,7 @@ describe('HeaderComponent (integração tema claro/escuro)', () => {
     service = TestBed.inject(TemaClaroEscuroSignalService);
     fixture.detectChanges();
 
-    imgElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    imgElement = fixture.debugElement.query(By.css('[data-test-id="botao-mudar-tema"]')).nativeElement as HTMLImageElement;
   });
 
   it('deve iniciar no tema escuro por padrão', () => {
