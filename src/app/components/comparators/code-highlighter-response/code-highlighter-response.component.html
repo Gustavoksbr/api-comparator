@@ -9,6 +9,7 @@
       <div class="quadrado-cinza">
         <div>Status Code:</div>
         <div class="status-code-number"
+             [attr.data-test-id]="'body-response-status-code-' + apiType().toLowerCase()"
              [ngStyle]="{
                   'color':
                     (statusCode() ?? 0) >= 100 && (statusCode() ?? 0) <= 199 ? 'var(--text-color)' :
@@ -24,6 +25,8 @@
     }
   </div>
   <div class="code-content">
-    <textarea highlight-js [lang]="'{{linguagem()}}'">{{formattedResponse}}</textarea>
+    <textarea highlight-js [lang]="'{{linguagem()}}'"
+              [attr.data-test-id]="'body-response-textarea-' + apiType().toLowerCase()"
+    >{{formattedResponse}}</textarea>
   </div>
 </div>

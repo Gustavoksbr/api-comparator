@@ -1,5 +1,5 @@
-import {computed, Injectable, signal, WritableSignal} from '@angular/core';
-import {ApiTipo, CasoDeUso, CursoRequest} from '../models/Models';
+import {computed, effect, Injectable, signal, WritableSignal} from '@angular/core';
+import {ApiTipo, CasoDeUso, CursoRequest} from '../../models/Models';
 
 type GraphqlBodyResponse = {
   codigo: boolean;
@@ -24,7 +24,7 @@ export class CursoSignalService {
 
    public casoDeUsoSelecionado = signal<CasoDeUso>('getAll');
   public requestCursos: Record<CasoDeUso,  WritableSignal<CursoRequest>> = {
-    getAll: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', cargaHoraria: null }),
+    getAll: signal<CursoRequest>({ }),
     procurar: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', minCargaHoraria: null, maxCargaHoraria: null, isFindingByCodigo: true }),
     criar: signal<CursoRequest>({ codigo: '', titulo: '', descricao: '', cargaHoraria: null }),
     alterar: signal<CursoRequest>({ codigo: '', codigoNovo:'', titulo: '', descricao: '', cargaHoraria: null }),
@@ -127,5 +127,8 @@ public respostasDaApi: RespostasDaApi = {
   }
 };
   constructor() {
+    effect(() => {
+      console.log("Body repsonse atual: ", this.respostasDaApi.getAll['REST'].bodyResponse() );
+    });
   }
 }

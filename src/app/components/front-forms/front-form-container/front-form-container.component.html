@@ -1,41 +1,44 @@
-<div class="front-form-container">
-<div class="escolher-caso-de-uso-container">
-<div class="escolher-caso-de-uso-content">
-@for (caso of casoDeUsoTextos; track caso) {
-  <button
-    class="botao-caso-de-uso"
-[ngClass]="{
-  'selecionado': cursoSignalService.casoDeUsoSelecionado() === caso.casoDeUso,
-  'nao-selecionado': cursoSignalService.casoDeUsoSelecionado() !== caso.casoDeUso
-}"
-    (click)="selecionarCasoDeUso(caso.casoDeUso)"
-  >
-    {{ caso.texto }}
-  </button>
-}
-</div>
-</div>
-<div class="forms-caso-de-uso-container">
-@switch (cursoSignalService.casoDeUsoSelecionado()) {
-  @case ('getAll') {
+<div class="front-form-container" data-test-id="front-form-container">
+  <div class="escolher-caso-de-uso-container" data-test-id="escolher-caso-de-uso-container">
+    <div class="escolher-caso-de-uso-content">
+      @for (caso of casoDeUsoTextos; track caso) {
+        <button
+          [attr.data-test-id]="'botao-' + caso.casoDeUso"
+          class="botao-caso-de-uso"
+          [ngClass]="{
+            'selecionado': cursoSignalService.casoDeUsoSelecionado() === caso.casoDeUso,
+            'nao-selecionado': cursoSignalService.casoDeUsoSelecionado() !== caso.casoDeUso
+          }"
+          (click)="selecionarCasoDeUso(caso.casoDeUso)"
+        >
+          {{ caso.texto }}
+        </button>
+      }
+    </div>
+  </div>
 
-  }
-  @case ('procurar') {
-    <app-procurar-cursos
-
-    ></app-procurar-cursos>
-  }
-  @case ('criar') {
-    <app-criar-cursos
-
-    />
-  }
-  @case ('alterar') {
-    <app-atualizar-cursos></app-atualizar-cursos>
-  }
-  @case ('deletar') {
-    <app-deletar-cursos></app-deletar-cursos>
-  }
-}
-</div>
+  <div class="forms-caso-de-uso-container" data-test-id="forms-caso-de-uso-container">
+    @switch (cursoSignalService.casoDeUsoSelecionado()) {
+      @case ('procurar') {
+        <app-procurar-cursos
+          data-test-id="caso-uso-procurar"
+        ></app-procurar-cursos>
+      }
+      @case ('criar') {
+        <app-criar-cursos
+          data-test-id="caso-uso-criar"
+        />
+      }
+      @case ('alterar') {
+        <app-atualizar-cursos
+          data-test-id="caso-uso-alterar"
+        ></app-atualizar-cursos>
+      }
+      @case ('deletar') {
+        <app-deletar-cursos
+          data-test-id="caso-uso-deletar"
+        ></app-deletar-cursos>
+      }
+    }
+  </div>
 </div>

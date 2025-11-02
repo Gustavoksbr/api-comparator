@@ -26,9 +26,8 @@
         <li> Utiliza o protocolo <b>HTTP</b>.</li>
         <li> Métodos principais: <b>GET, POST, PUT e DELETE</b> (entre outros).</li>
         <li> URLs são <b>dinâmicas</b> (podem conter <i>path params</i> ou <i>query params</i>).</li>
-        <li> Usa o formato <b>JSON</b>. No header da requisição, o Content-Type deve ser <b>application/json</b>.</li>
+        <li> Geralmente utiliza o formato <b>JSON</b>, mas pode ser configurado para <b>XML</b> também</li>
         <li> Status codes comuns: <code>200, 201, 204, 400, 401, 403, 404, 409, 500...</code></li>
-        <li> Os atributos retornados são definidos pela própria API.</li>
       </ul>
     </div>
 
@@ -39,7 +38,7 @@
         <li> Utiliza o protocolo <b>HTTP</b>.</li>
         <li> Método: apenas <b>POST</b>.</li>
         <li> URL é <b>fixa</b>; o que varia é o <b>corpo da requisição</b> (<i>body</i>).</li>
-        <li> Possui sua própria <b>linguagem de consulta</b>. O Content-Type no header deve ser <b>application/graphql</b>.</li>
+        <li> Possui sua própria <b>linguagem de consulta</b></li>
         <li> Status code: normalmente <b>200</b>. Em caso de erro, o retorno contém um objeto com o campo <code>"errors": [...]</code>.</li>
         <li> Permite ao cliente escolher exatamente quais <b>atributos</b> deseja receber na resposta.</li>
       </ul>
@@ -54,9 +53,8 @@
         <li> Geralmente utiliza <b>HTTP</b>, mas pode usar outros protocolos de comunicação, como <b>SMTP</b> ou <b>JMS</b> (<i>Java Message Service</i>).</li>
         <li> Método: apenas <b>POST</b>.</li>
         <li> URL é <b>fixa</b>; o que muda é o <b>corpo da requisição</b> (<i>body</i>).</li>
-        <li> Utiliza o formato <b>XML</b>. O Content-Type no header deve ser <b>text/xml</b>.</li>
+        <li> Utiliza o formato <b>XML</b></li>
         <li> Status codes comuns: <b>200</b> (sucesso) e <b>500</b> (qualquer tipo de erro).</li>
-        <li> Os atributos retornados são definidos pela própria API.</li>
       </ul>
     </div>
 

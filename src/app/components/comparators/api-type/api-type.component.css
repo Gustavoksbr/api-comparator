@@ -50,7 +50,6 @@
 }
 
 .api-type-main{
-  /*background: linear-gradient( #d2fdd2, #e0e0e0);*/
   display: grid;
   transition: grid-template-rows 500ms;
   /* utilizei uma estrategia interessante para minimizar e maximizar a div: https://www.youtube.com/watch?v=B_n4YONte5A*/

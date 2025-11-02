@@ -7,7 +7,6 @@ export class TemaClaroEscuroSignalService {
   public escuro = signal<boolean>(true);
 
   constructor() {
-    // inicializa o signal a partir do localStorage
     const tema = localStorage.getItem("tema");
     if (tema === "escuro" || tema == null) {
       this.escuro.set(true);
@@ -15,7 +14,6 @@ export class TemaClaroEscuroSignalService {
       this.escuro.set(false);
     }
 
-    // sincroniza DOM e localStorage sempre que o signal mudar
     effect(() => {
       const isEscuro = this.escuro();
       if (isEscuro) {

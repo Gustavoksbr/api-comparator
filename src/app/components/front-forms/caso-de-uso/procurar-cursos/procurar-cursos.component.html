@@ -1,45 +1,91 @@
-
-
-
 <form [formGroup]="formulario">
   <h3>Busque um ou mais cursos</h3>
   <div class="selecionar-tipo-procura">
-      <button (click)="alterarFindingByCodigo()" [ngClass]="{'selecionado':cursoSignalService.requestCursos.procurar().isFindingByCodigo,'nao-selecionado':!cursoSignalService.requestCursos.procurar().isFindingByCodigo}">
-        Buscar por código</button>
-      <button (click)="alterarFindingByCodigo()" [ngClass]="{'selecionado':!cursoSignalService.requestCursos.procurar().isFindingByCodigo,'nao-selecionado':cursoSignalService.requestCursos.procurar().isFindingByCodigo}">Buscar por outros parâmetros</button>
+    <button
+      (click)="alterarFindingByCodigo()"
+      [ngClass]="{
+        'selecionado': cursoSignalService.requestCursos.procurar().isFindingByCodigo,
+        'nao-selecionado': !cursoSignalService.requestCursos.procurar().isFindingByCodigo
+      }"
+      data-test-id="procurar-botao-por-codigo"
+    >
+      Buscar por código
+    </button>
+    <button
+      (click)="alterarFindingByCodigo()"
+      [ngClass]="{
+        'selecionado': !cursoSignalService.requestCursos.procurar().isFindingByCodigo,
+        'nao-selecionado': cursoSignalService.requestCursos.procurar().isFindingByCodigo
+      }"
+      data-test-id="procurar-botao-por-parametros"
+    >
+      Buscar por outros parâmetros
+    </button>
   </div>
+
   @if (this.cursoSignalService.requestCursos.procurar().isFindingByCodigo) {
-  <div class="campo">
-    <label for="codigo">Código:</label>
-    <input id="codigo" formControlName="codigo"  type="text" [maxLength]="15"/>
-    <div class="contador-caracteres" >
-      {{ this.cursoSignalService.requestCursos.procurar().codigo?.length || 0 }}/15
+    <div class="campo">
+      <label for="codigo">Código:</label>
+      <input
+        id="codigo"
+        formControlName="codigo"
+        type="text"
+        [maxLength]="15"
+        data-test-id="procurar-input-codigo"
+      />
+      <div class="contador-caracteres">
+        {{ this.cursoSignalService.requestCursos.procurar().codigo?.length || 0 }}/15
+      </div>
     </div>
-  </div>
   } @else {
-  <div class="campo">
-    <label for="titulo">Substring de título:</label>
-    <input id="titulo" type="text" formControlName="titulo" [maxLength]="15"/>
-    <div class="contador-caracteres" >
-      {{ this.cursoSignalService.requestCursos.procurar().titulo?.length || 0 }}/15
+    <div class="campo">
+      <label for="titulo">Substring de título:</label>
+      <input
+        id="titulo"
+        type="text"
+        formControlName="titulo"
+        [maxLength]="15"
+        data-test-id="procurar-input-titulo"
+      />
+      <div class="contador-caracteres">
+        {{ this.cursoSignalService.requestCursos.procurar().titulo?.length || 0 }}/15
+      </div>
     </div>
-  </div>
-  <div class="campo">
-    <label for="descricao">Substring de descrição:</label>
-    <textarea id="descricao" type="text" formControlName="descricao" [maxLength]="100">
-    </textarea>
-    <div class="contador-caracteres" >
-{{ this.cursoSignalService.requestCursos.procurar().descricao?.length || 0 }}/100
+    <div class="campo">
+      <label for="descricao">Substring de descrição:</label>
+      <textarea
+        id="descricao"
+        type="text"
+        formControlName="descricao"
+        [maxLength]="100"
+        data-test-id="procurar-textarea-descricao"
+      ></textarea>
+      <div class="contador-caracteres">
+        {{ this.cursoSignalService.requestCursos.procurar().descricao?.length || 0 }}/100
+      </div>
     </div>
-  </div>
-  <div class="campo">
-    <label for="minCargaHoraria">Carga horária mínima:</label>
-    <input id="minCargaHoraria" type="number" formControlName="minCargaHoraria" [min]="0" [max]="300" />
-  </div>
-  <div class="campo">
-    <label for="maxCargaHoraria">Carga horária máxima:</label>
-    <input id="maxCargaHoraria" type="number" formControlName="maxCargaHoraria" [min]="0" [max]="300" />
-  </div>
+    <div class="campo">
+      <label for="minCargaHoraria">Carga horária mínima:</label>
+      <input
+        id="minCargaHoraria"
+        type="number"
+        formControlName="minCargaHoraria"
+        [min]="0"
+        [max]="300"
+        data-test-id="procurar-input-min-carga-horaria"
+      />
+    </div>
+    <div class="campo">
+      <label for="maxCargaHoraria">Carga horária máxima:</label>
+      <input
+        id="maxCargaHoraria"
+        type="number"
+        formControlName="maxCargaHoraria"
+        [min]="0"
+        [max]="300"
+        data-test-id="procurar-input-max-carga-horaria"
+      />
+    </div>
     <div class="mensagem-campo-vazio">
       Obs: Deixe o campo vazio caso não queira filtrar por ele.
     </div>

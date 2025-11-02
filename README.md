@@ -1,12 +1,11 @@
-﻿﻿#  API Comparator
+﻿# API Comparator
 
-
-## 🧪 Acesse em: https://api-comparator.vercel.app/
-
+## 🧪 Acesse em: [https://api-comparator.vercel.app/](https://api-comparator.vercel.app/)
 
 ## 📘 Descrição do Projeto
 
 O **API Comparator** compara diferentes estilos arquiteturais baseados no protocolo HTTP (**REST**, **GraphQL** e **SOAP**) para os seguintes casos de uso:
+
 * Listar todos os cursos
 * Procurar curso (por código ou por outro atributo)
 * Criar curso
@@ -15,7 +14,7 @@ O **API Comparator** compara diferentes estilos arquiteturais baseados no protoc
 
 Utiliza Angular 18, SPA, standalone components, **Reactive Forms** e **Signals**. Como biblioteca externa, utiliza `ngx-highlight-js` para destacar o código das requisições e respostas.
 
-O projeto consome a api https://cursos-api-7vr6.onrender.com, cujo código está em https://github.com/Gustavoksbr/curso-maker
+O projeto consome a api [https://cursos-api-7vr6.onrender.com](https://cursos-api-7vr6.onrender.com), cujo código está em [https://github.com/Gustavoksbr/curso-maker](https://github.com/Gustavoksbr/curso-maker)
 
 ---
 
@@ -24,10 +23,9 @@ O projeto consome a api https://cursos-api-7vr6.onrender.com, cujo código está
 1. Escolha um **caso de uso** no topo da página (Listar, Criar, Atualizar, etc.).
 2. Preencha os campos do formulário.
 3. Observe como as requisições **REST**, **GraphQL** e **SOAP** são geradas automaticamente.
-4. Clique em **Executar** em cada comparador para fazer a chamada a api e ver o *body response* correspondente.
+4. Clique em **Executar** em cada comparador para fazer a chamada a API e ver o *body response* correspondente.
 
 ---
-
 
 ## ⚙️ Principais Funcionalidades
 
@@ -49,27 +47,25 @@ O componente **GraphQL** possui um **checklist** para que o usuário escolha qua
 
 ### 🧠 Reatividade com Signals
 
-O serviço [curso-signal.service.ts](./src/app/services/curso-signal.service.ts) utiliza **Angular Signals** para manter os dados compartilhados entre os componentes sincronizados. Assim, qualquer mudança feita no formulário é refletida automaticamente nos comparadores.
+O serviço [curso-signal.service.ts](src/app/services/curso-signal/curso-signal.service.ts) utiliza **Angular Signals** para manter os dados compartilhados entre os componentes sincronizados. Assim, qualquer mudança feita no formulário é refletida automaticamente nos comparadores.
 
 ### 📡 Comunicação com o Back-end
 
-O serviço [curso-api.service.ts](./src/app/services/curso-api.service.ts) é responsável por fazer as verdadeiras requisições HTTP para o back-end.
+O serviço [curso-api.service.ts](src/app/services/curso-api/curso-api.service.ts) é responsável por fazer as verdadeiras requisições HTTP para o back-end.
 
 ### ☀️🌙 Tema Claro/Escuro
-O usuário pode alternar entre tema claro e escuro, cujas variáveis das cores são definidas em [./src/styles.css](./src/styles.css). Por padrão, o tema é escuro
+
+O usuário pode alternar entre tema claro e escuro, cujas variáveis das cores são definidas em [./src/styles.css](./src/styles.css). Por padrão, o tema é escuro.
 
 ---
 
-
 ## 🧩 Estrutura da Aplicação
-
-A aplicação é composta por uma única página dividida em seções visuais e componentes interativos:
 
 ```
 src/app
 │
 ├── components
-│   ├── comparators/            # Compara como ficaria a requisição em cada api
+│   ├── comparators/            # Compara como ficaria a requisição em cada API
 │   ├── front-forms/            # Formulário dinâmico
 │   └── layout-externo/         # Header, Section e Footer. Componentes estáticos
 │
@@ -78,12 +74,9 @@ src/app
 ├── services/
 │   ├── curso-api.service.ts    # Realiza requisições REST, GraphQL e SOAP para o back-end
 │   └── curso-signal.service.ts # Gerencia estado reativo com Signals
-│
-
 ```
 
 ---
-
 
 ## 💻 Como Executar o Projeto Localmente
 
@@ -100,8 +93,8 @@ cd api-comparator
 npm install
 ```
 
-
 ### 3️⃣ Executar a aplicação
+
 ```bash
 ng serve
 ```
@@ -114,32 +107,75 @@ http://localhost:4200
 
 ---
 
+## 🧪 Testes Automatizados
+
+O projeto possui **testes unitários** e de integração com **Jest** e **testes e2e** usando **Cypress** .
+
+### ✅ Jest
+
+Testes unitários e de integração de serviços e componentes
+
+Testei isoladamente os formularios de cada caso de uso (validando valores minimos e maximos), mockando o serviço de signal para manter o teste isolado
+
+Também testei a funcionalidade de mudar o tema claro/escuro. Resolvi fazer um teste de integração, utilizando o verdadeiro servico de mudar tema claro-escuro de  em vez de mockar.
+
+Para rodar os testes Jest:
+
+```bash
+npm test
+```
+
+### ✅ Cypress
+
+Testes de fluxo completo, incluindo criação, busca, alteração e exclusão de cursos, verificando requisições REST, GraphQL e SOAP.
+
+A ideia é principalmente testar vários componentes trabalhando juntos. Por exemplo, ao digitar no formulario (um componente), deve mudar o body request (outro componente) e, ao clicar em executar, deve retornar o body response correto (outro componente).
+
+Testei endpoints chamando o back end real, mas tomando cuidado para não alterar dados. Não só adicionei endpoints de leitura, mas também criar, alterar e deletar curso, tendo a certeza que vai dar erro pois há cursos apenas leitura no sistema (de código c1 a c10). Eles foram criados inicialmente para manter uma quantidade mínima de cursos, mas também podem ser bons para testes e2e.
+
+Ele fica fora da pasta src:
+```
+│
+├── cypress
+│  └──  e2e
+│
+├── src/app
+│  └── ... 
+```
+
+Para executar o Cypress:
+
+```bash
+npm run cypress:run
+```
+Ou para abrir a interface gráfica do Cypress:
+
+```bash
+npm run cypress:open
+```
+
+
+
+---
 
 ## 📚 Dependências Externas
 
-Utilizei a biblioteca ngx-highlight-js e arquivos de css e js específicos para essa biblioteca, que eu peguei no site https://www.jsdelivr.com/
+* `ngx-highlight-js` para destacar o código das requisições.
+* Arquivos CSS e JS de highlight retirados de:
 
-Eles servem especificamente para colorir o código das requisições e respostas, parecendo um editor de código
+  * [highlight.min.js](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js)
+  * [atom-one-dark.min.css](https://codepen.io/zsty/pen/gxxQLe)
+  * [atom-one-light.min.css](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/atom-one-light.min.css)
 
-- [highlight.min.js](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js)
-- [atom-one-dark.min.css](https://codepen.io/zsty/pen/gxxQLe)
-- [atom-one-light.min.css](https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/atom-one-light.min.css)
-
-
-O  `atom-one.min.js` deixei em [./public/vendor/atom-one.min.js](./public/vendor/atom-one.min.js)
-
-Eu extraí as propriedades dos arquivos css e deixei em [./src/styles.css](./src/styles.css), com
-`atom-one-dark.min.css` sendo representado pelo tema escuro e `atom-one-light.min.css` pelo tema claro
+Os arquivos JS foram movidos para `./public/vendor/atom-one.min.js` e os estilos foram extraídos para `./src/styles.css`.
 
 ---
 
 ## 🚀 Futuras Implementações
 
-- Adicionar testes unitários e de integração.
-- Adicionar mais campos para os cursos (ex: instrutor, nível, categoria, etc).
-- Adicionar autenticação e autorização.
-- Simular um front end real de um site de cursos, e não apenas um comparador de APIs
-
+* Adicionar mais campos para os cursos (instrutor, nível, categoria, etc).
+* Adicionar autenticação e autorização.
+* Simular um front-end real de um site de cursos.
 
 ---
 

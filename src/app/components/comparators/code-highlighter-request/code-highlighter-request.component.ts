@@ -10,9 +10,9 @@ import {
   signal,
   ViewChild
 } from '@angular/core';
-type apiTipos = 'REST' | 'SOAP' | 'GRAPHQL' ;
+type apiTypes = 'REST' | 'SOAP' | 'GRAPHQL' ;
 import { HighlightJsDirective } from 'ngx-highlight-js';
-import {CursoSignalService} from '../../../services/curso-signal.service';
+import {CursoSignalService} from '../../../services/curso-signal/curso-signal.service';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CasoDeUso, CursoRequest} from '../../../models/Models';
 type GraphqlBodyResponse = {
@@ -41,12 +41,12 @@ export class CodeHighlighterRequestComponent {
       this.enviarDados.emit(this.bodyRequest());
     });
   }
-  public apiTipo = input<apiTipos>('REST');
+  public apiType = input<apiTypes>('REST');
   // public codigo = input<string>('');
   public enviarDados = output<string>();
 
   public linguagem = computed(() => {
-    switch (this.apiTipo()) {
+    switch (this.apiType()) {
       case 'REST':
         return 'json';
       case 'GRAPHQL':
@@ -68,7 +68,7 @@ export class CodeHighlighterRequestComponent {
 
   bodyRequest = computed(() => {
     const curso = this.cursoAtual();
-    switch (this.apiTipo()) {
+    switch (this.apiType()) {
         case 'REST':
             return this.retornarRestBodyRequest(curso, this.cursoSignalService.casoDeUsoSelecionado());
         case 'GRAPHQL':
@@ -80,7 +80,7 @@ export class CodeHighlighterRequestComponent {
     }
   });
   public contentType = computed(() => {
-    switch (this.apiTipo()) {
+    switch (this.apiType()) {
       case 'REST':
         return 'application/json';
       case 'SOAP':

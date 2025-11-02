@@ -1,19 +1,15 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
-  inject,
   input, Signal,
   signal,
-  WritableSignal
 } from '@angular/core';
 import {CodeHighlighterRequestComponent} from '../code-highlighter-request/code-highlighter-request.component';
-import {CursoSignalService} from '../../../services/curso-signal.service';
+import {CursoSignalService} from '../../../services/curso-signal/curso-signal.service';
 import {ApiTipo, CasoDeUso, CursoRequest} from '../../../models/Models';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CodeHighlighterResponseComponent} from '../code-highlighter-response/code-highlighter-response.component';
-import {CursoApiService} from '../../../services/curso-api.service';
+import {CursoApiService} from '../../../services/curso-api/curso-api.service';
 import {NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
 type HttpMetodo = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 type GraphqlBodyResponse = {
@@ -31,7 +27,6 @@ type GraphqlBodyResponse = {
     ReactiveFormsModule,
     CodeHighlighterResponseComponent,
     NgClass,
-    NgOptimizedImage,
     NgStyle
   ],
   templateUrl: './api-type.component.html',
@@ -41,12 +36,15 @@ export class ApiTypeComponent {
   apiType = input<'REST' | 'SOAP' | 'GRAPHQL'>('REST');
   isOpen = signal(false);
 
-public executar(casoDeUso : CasoDeUso, tipoApi : ApiTipo, bodyRequest : string, url : string, httpMetodo : HttpMetodo) {
-
+  public executar(casoDeUso : CasoDeUso, tipoApi : ApiTipo, bodyRequest : string, url : string, httpMetodo : HttpMetodo) {
+if (this.carregando()){
+  console.log( "cancelado");
+  return;
+}
   console.log(
     "executando:\nAPI Type: ", this.apiType(),
     "\nCaso de uso: ", this.casoDeUsoAtual(),
-    "\nURL: https://cursos-api-7vr6.onrender.com/"+ this.url(),
+    "\nURL:"+ this.url(),
     "\nMétodo HTTP: ", this.httpMetodo(),
     "\nContent-Type: ", this.contentType(),
     "\nBody Request: ", this.bodyRequest()
@@ -82,6 +80,8 @@ public executar(casoDeUso : CasoDeUso, tipoApi : ApiTipo, bodyRequest : string, 
             this.cursoSignalService.respostasDaApi[casoDeUso][tipoApi].statusCode.set(error.status || 500);
           }
         });
+        console.log('Finalizado o método executar');
+        console.log("respostas:"+ this.cursoSignalService.respostasDaApi[casoDeUso][tipoApi].bodyResponse());
 }
   toggle() {
     this.isOpen.set(!this.isOpen());

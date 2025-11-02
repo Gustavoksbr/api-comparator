@@ -1,9 +1,8 @@
 import {Component, computed, input, output, Signal, signal} from '@angular/core';
 
-import {CursoSignalService} from '../../../services/curso-signal.service';
+import {CursoSignalService} from '../../../services/curso-signal/curso-signal.service';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CasoDeUso, CursoRequest} from '../../../models/Models';
-import {GetAllCursosComponent} from '../caso-de-uso/get-all-cursos/get-all-cursos.component';
 import {ProcurarCursosComponent} from '../caso-de-uso/procurar-cursos/procurar-cursos.component';
 import {CriarCursosComponent} from '../caso-de-uso/criar-cursos/criar-cursos.component';
 import {AtualizarCursosComponent} from '../caso-de-uso/atualizar-cursos/atualizar-cursos.component';
@@ -16,7 +15,6 @@ import {NgClass} from '@angular/common';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    GetAllCursosComponent,
     ProcurarCursosComponent,
     CriarCursosComponent,
     AtualizarCursosComponent,

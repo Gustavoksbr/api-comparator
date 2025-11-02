@@ -1,7 +1,7 @@
 import {Component, computed} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CursoRequest} from '../../../../models/Models';
-import {CursoSignalService} from '../../../../services/curso-signal.service';
+import {CursoSignalService} from '../../../../services/curso-signal/curso-signal.service';
 
 @Component({
   selector: 'app-deletar-cursos',

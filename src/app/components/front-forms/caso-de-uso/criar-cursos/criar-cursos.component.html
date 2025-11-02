@@ -2,28 +2,51 @@
   <h3>Crie um curso</h3>
   <div class="campo">
     <label for="codigo">Código:</label>
-    <input id="codigo" formControlName="codigo"  type="text" [maxLength]="15"/>
-    <div class="contador-caracteres" >
-      {{ this.cursoSignalService.requestCursos.criar().codigo?.length || 0 }}/15
+    <input
+      id="codigo"
+      formControlName="codigo"
+      type="text"
+      [maxLength]="15"
+      data-test-id="criar-input-codigo"
+    />
+    <div class="contador-caracteres">
+      {{ this.cursoAtual().codigo?.length || 0 }}/15
     </div>
   </div>
   <div class="campo">
     <label for="titulo">Título:</label>
-    <input id="titulo" type="text" formControlName="titulo" [maxLength]="30" />
-    <div class="contador-caracteres" >
+    <input
+      id="titulo"
+      type="text"
+      formControlName="titulo"
+      [maxLength]="30"
+      data-test-id="criar-input-titulo"
+    />
+    <div class="contador-caracteres">
       {{ this.cursoSignalService.requestCursos.criar().titulo?.length || 0 }}/30
     </div>
   </div>
   <div class="campo">
     <label for="descricao">Descrição:</label>
-    <textarea id="descricao" type="text" formControlName="descricao" [maxLength]="100">
-    </textarea>
-    <div class="contador-caracteres" >
+    <textarea
+      id="descricao"
+      type="text"
+      formControlName="descricao"
+      [maxLength]="100"
+      data-test-id="criar-textarea-descricao"
+    ></textarea>
+    <div class="contador-caracteres">
       {{ this.cursoSignalService.requestCursos.criar().descricao?.length || 0 }}/100
     </div>
   </div>
   <div class="campo">
     <label for="cargahoraria">Carga horária:</label>
-    <input id="cargahoraria" type="number" formControlName="cargaHoraria" [max]="300"/>
+    <input
+      id="cargahoraria"
+      type="number"
+      formControlName="cargaHoraria"
+      [max]="300"
+      data-test-id="criar-input-carga-horaria"
+    />
   </div>
 </form>

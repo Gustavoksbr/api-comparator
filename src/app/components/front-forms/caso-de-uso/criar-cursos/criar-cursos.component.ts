@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, computed} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {CursoSignalService} from '../../../../services/curso-signal.service';
+import {CursoSignalService} from '../../../../services/curso-signal/curso-signal.service';
 import {CursoRequest} from '../../../../models/Models';
 
 @Component({
@@ -25,6 +25,8 @@ export class CriarCursosComponent {
       }
     });
   }
+
+  cursoAtual = computed(() => this.cursoSignalService.requestCursos.criar());
   formulario: FormGroup = new FormGroup({
     codigo: new FormControl('',[
       Validators.required,

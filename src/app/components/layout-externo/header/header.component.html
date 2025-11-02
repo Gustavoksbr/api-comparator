@@ -1,13 +1,4 @@
 <header>
 <h1>Api Comparator</h1>
-<!--  <div class="form-switch mudar-tema">-->
-<!--    @if(!escuro()) {-->
-<!--      <label class="form-check-label" >Tema Claro</label>-->
-<!--      <input class="form-check-input" type="checkbox" role="switch"  (click)="changeTheme()">-->
-<!--    }@else{-->
-<!--      <label class="form-check-label" >Tema Escuro</label>-->
-<!--      <input class="form-check-input" type="checkbox" role="switch" (click)="changeTheme()" checked>-->
-<!--    }-->
-<!--  </div>-->
   <img [src] = "'images/tema-'+(escuro() ? 'claro' : 'escuro')+'.svg'" alt="Tema" class="tema-icone" (click)="changeTheme()" [title]="escuro() ? 'Mude para o tema claro' : 'Mude para o tema escuro' ">
 </header>

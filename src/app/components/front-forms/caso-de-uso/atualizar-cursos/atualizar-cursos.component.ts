@@ -1,5 +1,5 @@
 import {Component, computed, signal} from '@angular/core';
-import {CursoSignalService} from '../../../../services/curso-signal.service';
+import {CursoSignalService} from '../../../../services/curso-signal/curso-signal.service';
 import {CursoRequest} from '../../../../models/Models';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
@@ -26,6 +26,8 @@ export class AtualizarCursosComponent{
       }
     });
   }
+  cursoAtual = computed(() => this.cursoSignalService.requestCursos.alterar());
+
   formulario: FormGroup = new FormGroup({
     codigo: new FormControl('',[
       Validators.required,
