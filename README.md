@@ -143,7 +143,17 @@ Ele fica fora da pasta src:
 │  └── ... 
 ```
 
-Para executar o Cypress:
+Antes de executar o Cypress, certifique-se de que a aplicação Angular está rodando localmente com `ng serve`.
+
+Você pode alterar a URL do Angular no arquivo `./cypress.env.json`:
+```json
+{
+  "BASE_URL": "http://localhost:4200"
+}
+
+```
+
+Para executar o Cypress
 
 ```bash
 npm run cypress:run

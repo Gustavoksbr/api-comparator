@@ -1,10 +1,10 @@
 // cypress/e2e/procurar-cursos-fluxo-completo.cy.ts
 // Testes de fluxo completo: Formulário → Body Request → Execução → Body Response
-
+const BASE_URL = Cypress.env('BASE_URL') || 'http://localhasdasdadsasdadsost:420sssssssssss0';
 describe('Procurar Cursos - Fluxo Completo', () => {
 
   it('Deve buscar curso c8 por código em REST, GRAPHQL e SOAP', () => {
-    cy.visit('http://localhost:4200/');
+    cy.visit(BASE_URL);
     cy.get('[data-test-id="botao-procurar"]').click();
 
     // Preencher formulário
@@ -70,7 +70,7 @@ describe('Procurar Cursos - Fluxo Completo', () => {
   });
 
   it('Deve buscar cursos por parâmetros com filtro de carga horária (excluir c9, incluir c8)', () => {
-    cy.visit('http://localhost:4200/');
+    cy.visit(BASE_URL);
     cy.get('[data-test-id="botao-procurar"]').click();
 
     // Alternar para busca por parâmetros
@@ -133,7 +133,7 @@ describe('Procurar Cursos - Fluxo Completo', () => {
   });
 
   it('Deve buscar cursos por substring de título', () => {
-    cy.visit('http://localhost:4200/');
+    cy.visit(BASE_URL);
     cy.get('[data-test-id="botao-procurar"]').click();
     cy.get('[data-test-id="procurar-botao-por-parametros"]').click();
 
@@ -213,7 +213,7 @@ describe('Procurar Cursos - Fluxo Completo', () => {
 describe('Fluxo Completo com Erros (criar curso codigo duplicado, + alterar e deletar curso apenas leitura', () => {
 
   it('Deve tentar criar curso com código duplicado c8 em REST, GRAPHQL e SOAP', () => {
-    cy.visit('http://localhost:4200/');
+    cy.visit(BASE_URL);
     cy.get('[data-test-id="botao-criar"]').click();
 
     // Preencher formulário com código duplicado
@@ -293,7 +293,7 @@ describe('Fluxo Completo com Erros (criar curso codigo duplicado, + alterar e de
   it('Deve tentar alterar curso somente leitura c1 + nao deve perder o as informacoes ao mudar de caso de uso', () => {
     const codigo = 'c1';
 
-    cy.visit('http://localhost:4200/');
+    cy.visit(BASE_URL);
     cy.get('[data-test-id="botao-alterar"]').click();
 
     cy.get('[data-test-id="alterar-input-codigo"]').type(codigo);
@@ -351,7 +351,7 @@ describe('Fluxo Completo com Erros (criar curso codigo duplicado, + alterar e de
       .and('not.contain', 'Novo Titulo');
   });
   it('Deve tentar deletar curso somente leitura c8 em REST, GRAPHQL e SOAP', () => {
-    cy.visit('http://localhost:4200/');
+    cy.visit(BASE_URL);
     cy.get('[data-test-id="botao-deletar"]').click();
 
     cy.get('[data-test-id="deletar-input-codigo"]').type('c8');
