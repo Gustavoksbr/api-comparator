@@ -13,9 +13,6 @@ O **API Comparator** compara diferentes estilos arquiteturais baseados no protoc
 * Deletar curso
 
 Utiliza Angular 18, SPA, standalone components, **Reactive Forms** e **Signals**. Como biblioteca externa, utiliza `ngx-highlight-js` para destacar o código das requisições e respostas.
-
-O projeto consome a api [https://cursos-api-7vr6.onrender.com](https://cursos-api-7vr6.onrender.com), cujo código está em [https://github.com/Gustavoksbr/curso-maker](https://github.com/Gustavoksbr/curso-maker)
-
 ---
 
 ## 🤔 Como Usar
