@@ -111,14 +111,17 @@ http://localhost:4200
 
 A URL do back-end não é mais um valor fixo no código-fonte — ela vem da variável de
 ambiente **`API_URL`**, lida em tempo de build por [`scripts/set-env.js`](scripts/set-env.js),
-que gera `src/environments/environment.ts` antes de cada `ng build` (veja o script
-`prebuild` em [`package.json`](package.json)).
+que gera `src/environments/environment.ts` antes de cada `ng build`/`ng serve` (veja o
+script `prebuild` em [`package.json`](package.json)).
 
-* **Localmente**: se `API_URL` não estiver definida, o fallback é `http://localhost:8080/`
-  (a API PHP rodando localmente).
+* **Localmente**: copie [`.env.example`](.env.example) para `.env` e ajuste `API_URL`
+  (ex.: `API_URL=http://localhost:8080/`, se a API PHP estiver rodando na sua máquina).
+  O `.env` é lido automaticamente pelo `prebuild` e não é versionado. Se ele não existir
+  e `API_URL` também não estiver definida no ambiente, o fallback é `http://localhost:8080/`.
 * **Na Vercel**: defina `API_URL` nas configurações do projeto (Settings → Environment
   Variables) apontando para a URL da API publicada no Render, ex.:
-  `https://cursos-api.onrender.com/`.
+  `https://cursos-api.onrender.com/`. Uma env var real sempre tem prioridade sobre o
+  `.env` local.
 
 ---
 
