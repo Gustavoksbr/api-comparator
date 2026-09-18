@@ -1,0 +1,126 @@
+.wire-log-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.wire-log-header {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
+}
+
+.wire-log-header:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.01);
+}
+
+.wire-log-header .indicator {
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+.wire-log-header .indicator.pra-baixo {
+  transform: rotate(180deg);
+}
+
+.wire-log-main {
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 12px;
+}
+
+.wire-log-acoes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.wire-log-acoes button {
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 14px;
+  border: none;
+  background-color: #0056b3;
+  color: white;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.wire-log-acoes button:hover:not(:disabled) {
+  background-color: #003d82;
+  transform: scale(1.03);
+}
+
+.wire-log-acoes button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.wire-log-acoes button[data-test-id="wire-log-limpar"] {
+  background-color: var(--status-code-color-5xx);
+}
+
+.wire-log-acoes button[data-test-id="wire-log-limpar"]:hover:not(:disabled) {
+  background-color: #c73f35;
+}
+
+.wire-log-resumo {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.resumo-card {
+  flex: 1;
+  min-width: 140px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: white;
+}
+
+.resumo-card h4 {
+  margin: 0 0 4px 0;
+}
+
+.resumo-card p {
+  margin: 2px 0;
+  font-size: 0.85rem;
+}
+
+.leg-rest {
+  background-color: var(--rest);
+}
+.leg-graphql {
+  background-color: var(--graphql);
+}
+.leg-soap {
+  background-color: var(--soap);
+}
+
+.wire-log-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.wire-log-tabela th,
+.wire-log-tabela td {
+  border: 1px solid #666;
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.sem-dados {
+  opacity: 0.7;
+  font-style: italic;
+}

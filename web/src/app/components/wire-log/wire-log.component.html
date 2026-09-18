@@ -1,0 +1,69 @@
+<div class="wire-log-container" data-test-id="wire-log-container">
+  <div class="wire-log-header" (click)="toggle()" data-test-id="wire-log-header">
+    <p>Wire log — tráfego real medido no servidor</p>
+    <span class="indicator" [class.pra-baixo]="isOpen()">^</span>
+  </div>
+
+  @if (isOpen()) {
+    <div class="wire-log-main">
+      <div class="wire-log-acoes">
+        <button type="button" (click)="atualizar()" [disabled]="carregando()" data-test-id="wire-log-atualizar">
+          Atualizar
+        </button>
+        <button type="button" (click)="limpar()" [disabled]="carregando()" data-test-id="wire-log-limpar">
+          Limpar
+        </button>
+      </div>
+
+      <div class="wire-log-resumo">
+        @for (leg of legs; track leg) {
+          <div class="resumo-card" [ngClass]="legClass(leg)">
+            <h4>{{ leg }}</h4>
+            @if (resumoPorLeg()[leg]) {
+              <p>{{ resumoPorLeg()[leg].chamadas }} chamada(s)</p>
+              <p>{{ resumoPorLeg()[leg].bytesMedio }} bytes médios</p>
+              <p>{{ resumoPorLeg()[leg].duracaoMediaMs }} ms médios</p>
+            } @else {
+              <p class="sem-dados">sem chamadas ainda</p>
+            }
+          </div>
+        }
+      </div>
+
+      <table class="wire-log-tabela" data-test-id="wire-log-tabela">
+        <thead>
+          <tr>
+            <th>Leg</th>
+            <th>Caso de uso</th>
+            <th>Status</th>
+            <th>Bytes req.</th>
+            <th>Bytes resp.</th>
+            <th>Duração (ms)</th>
+            <th>Campos pedidos</th>
+            <th>Campos recebidos</th>
+            <th>Over-fetching</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (registro of registros(); track registro.em + registro.caminho) {
+            <tr [ngClass]="legClass(registro.leg)">
+              <td>{{ registro.leg }}</td>
+              <td>{{ registro.casoDeUso }}</td>
+              <td>{{ registro.status }}</td>
+              <td>{{ registro.bytes.request }}</td>
+              <td>{{ registro.bytes.response }}</td>
+              <td>{{ registro.duracaoMs }}</td>
+              <td>{{ registro.fetching.camposPedidos ?? '—' }}</td>
+              <td>{{ registro.fetching.camposRecebidos ?? '—' }}</td>
+              <td>{{ registro.fetching.overFetching ?? '—' }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="9" class="sem-dados">Nenhuma chamada registrada neste sandbox ainda.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

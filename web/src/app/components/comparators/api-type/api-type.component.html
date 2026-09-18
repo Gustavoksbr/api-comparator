@@ -1,0 +1,144 @@
+<div class="api-type-container"
+[attr.data-test-id]="'api-type-container-'+ apiType().toLowerCase()">
+  <div class="api-type-header "
+       [attr.data-test-id]="'api-type-header-'+ apiType().toLowerCase()"
+       [ngClass]="{'api-type-header-rest':apiType()==='REST',
+        'api-type-header-graphql':apiType()==='GRAPHQL',
+        'api-type-header-soap':apiType()==='SOAP'
+        }"
+       (click)="toggle()" >
+    <p>{{apiType()}}</p>
+    <span class="indicator" [class.pra-baixo]="isOpen()">^</span>
+  </div>
+
+
+ <div class="api-type-main " [ngClass]="{'aparecer': isOpen(), 'desaparecer': !isOpen()}">
+    <div class="api-type-content "
+         [ngClass]="{'box-shadow-rest':apiType()==='REST',
+          'box-shadow-graphql':apiType()==='GRAPHQL',
+          'box-shadow-soap':apiType()==='SOAP'
+          }">
+
+      <div class="metodo-executar-url-container">
+
+
+        <div class="metodo-executar-container">
+          <div
+            class="metodo-content"
+            [ngClass]="{
+        'getColor': httpMetodo() === 'GET',
+        'postColor': httpMetodo() === 'POST',
+        'putColor': httpMetodo() === 'PUT',
+        'deleteColor': httpMetodo() === 'DELETE'
+      }">
+            <p>{{ this.httpMetodo() }}</p>
+          </div>
+
+          <div
+            class="executar"
+            [attr.data-test-id]="'botao-executar-'+ apiType().toLowerCase()"
+            (click)="executar(casoDeUsoAtual(), apiType(), bodyRequest(), url(), httpMetodo())"
+            [ngStyle]="{'cursor': carregando() ? 'default' : 'pointer'}">
+            @if (!carregando()) {
+              <div>Executar</div>
+              <img src="images/botao-executar.png" alt="Botão de executar" />
+            } @else {
+              <div class="loader"></div>
+            }
+          </div>
+        </div>
+
+
+        <div class="url-content">
+          <div>
+            <p>
+            Url da API:
+          </p>
+          </div>
+          <div class="url-texto"
+               [attr.data-test-id]="'url-da-api-'+ apiType().toLowerCase()"
+          >
+           <p>{{ this.urlBackEnd }}<b>{{ this.url() }}</b></p>
+          </div>
+        </div>
+
+      </div>
+
+
+      @if (apiType()==='GRAPHQL' && casoDeUsoAtual() != 'deletar') {
+        <div class="selecionar-atributos-para-response-graphql-container"
+        >
+          <h4>Quais campos você quer de resposta?</h4>
+          <div class="selecionar-atributos-para-response-graphql-content"
+               data-test-id="selecionar-atributos-para-response-content-graphql">
+          @for (campo of campos; track campo) {
+          <label>
+            <input
+              type="checkbox"
+              (change)="alterarGraphqlBodyResponse(campo)"
+              [checked]="this.cursoSignalService.selectGrapqhlBodyResponse()[campo]"
+            />
+            {{ campo }}
+          </label>
+          }
+          </div>
+
+          <!-- Campos aninhados: a mesma seleção de campos vale dentro de objetos
+               (instrutor) e de listas de objetos (modulos) — a maior vantagem
+               prática do GraphQL sobre REST/SOAP. -->
+          <div class="selecionar-atributos-aninhados-container">
+            <div class="selecionar-atributos-aninhados-grupo" data-test-id="selecionar-atributos-instrutor-graphql">
+              <span class="selecionar-atributos-aninhados-titulo">instrutor</span>
+              <div class="selecionar-atributos-para-response-graphql-content">
+                @for (campo of camposInstrutor; track campo) {
+                <label>
+                  <input
+                    type="checkbox"
+                    (change)="alterarGraphqlBodyResponseInstrutor(campo)"
+                    [checked]="this.cursoSignalService.selectGrapqhlBodyResponse().instrutor[campo]"
+                  />
+                  {{ campo }}
+                </label>
+                }
+              </div>
+            </div>
+            <div class="selecionar-atributos-aninhados-grupo" data-test-id="selecionar-atributos-modulos-graphql">
+              <span class="selecionar-atributos-aninhados-titulo">modulos</span>
+              <div class="selecionar-atributos-para-response-graphql-content">
+                @for (campo of camposModulo; track campo) {
+                <label>
+                  <input
+                    type="checkbox"
+                    (change)="alterarGraphqlBodyResponseModulo(campo)"
+                    [checked]="this.cursoSignalService.selectGrapqhlBodyResponse().modulos[campo]"
+                  />
+                  {{ campo }}
+                </label>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      <div class="codigos-container">
+        <!-- body request -->
+      @if (apiType()=='GRAPHQL'){
+      <app-code-highlighter-request
+        [apiType]="apiType()"
+        [graphqlBodyResponse]="this.cursoSignalService.selectGrapqhlBodyResponse()"
+        (enviarDados)="receberDados($event)"
+      />
+      } @else {
+      <app-code-highlighter-request
+        [apiType]="apiType()"
+        (enviarDados)="receberDados($event)"
+      />
+    }
+<!--        body response-->
+      <app-code-highlighter-response
+        [apiType]="apiType()"
+      />
+      </div>
+    </div>
+  </div>
+</div>

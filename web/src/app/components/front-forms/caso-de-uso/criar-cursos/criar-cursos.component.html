@@ -1,0 +1,122 @@
+<form [formGroup]="formulario">
+  <h3>Crie um curso</h3>
+  <div class="campo">
+    <label for="codigo">Código:</label>
+    <input
+      id="codigo"
+      formControlName="codigo"
+      type="text"
+      [maxLength]="15"
+      data-test-id="criar-input-codigo"
+    />
+    <div class="contador-caracteres">
+      {{ this.cursoAtual().codigo?.length || 0 }}/15
+    </div>
+  </div>
+  <div class="campo">
+    <label for="titulo">Título:</label>
+    <input
+      id="titulo"
+      type="text"
+      formControlName="titulo"
+      [maxLength]="30"
+      data-test-id="criar-input-titulo"
+    />
+    <div class="contador-caracteres">
+      {{ this.cursoSignalService.requestCursos.criar().titulo?.length || 0 }}/30
+    </div>
+  </div>
+  <div class="campo">
+    <label for="descricao">Descrição:</label>
+    <textarea
+      id="descricao"
+      type="text"
+      formControlName="descricao"
+      [maxLength]="100"
+      data-test-id="criar-textarea-descricao"
+    ></textarea>
+    <div class="contador-caracteres">
+      {{ this.cursoSignalService.requestCursos.criar().descricao?.length || 0 }}/100
+    </div>
+  </div>
+  <div class="campo">
+    <label for="cargahoraria">Carga horária:</label>
+    <input
+      id="cargahoraria"
+      type="number"
+      formControlName="cargaHoraria"
+      [max]="300"
+      data-test-id="criar-input-carga-horaria"
+    />
+  </div>
+  <div class="campo">
+    <label for="nivel">Nível:</label>
+    <select id="nivel" formControlName="nivel" data-test-id="criar-select-nivel">
+      <option value="INICIANTE">INICIANTE</option>
+      <option value="INTERMEDIARIO">INTERMEDIARIO</option>
+      <option value="AVANCADO">AVANCADO</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="preco">Preço:</label>
+    <input
+      id="preco"
+      type="number"
+      step="0.01"
+      formControlName="preco"
+      data-test-id="criar-input-preco"
+    />
+  </div>
+  <div class="campo">
+    <label for="ativo">Ativo:</label>
+    <select id="ativo" formControlName="ativo" data-test-id="criar-select-ativo">
+      <option value="true">sim</option>
+      <option value="false">não</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="tags">Tags (separadas por vírgula):</label>
+    <input
+      id="tags"
+      type="text"
+      formControlName="tags"
+      data-test-id="criar-input-tags"
+    />
+  </div>
+  <div class="campo">
+    <label for="instrutorNome">Instrutor — nome:</label>
+    <input
+      id="instrutorNome"
+      type="text"
+      formControlName="instrutorNome"
+      data-test-id="criar-input-instrutor-nome"
+    />
+  </div>
+  <div class="campo">
+    <label for="instrutorEmail">Instrutor — email:</label>
+    <input
+      id="instrutorEmail"
+      type="email"
+      formControlName="instrutorEmail"
+      data-test-id="criar-input-instrutor-email"
+    />
+  </div>
+  <div class="campo">
+    <label for="instrutorBio">Instrutor — bio:</label>
+    <input
+      id="instrutorBio"
+      type="text"
+      formControlName="instrutorBio"
+      data-test-id="criar-input-instrutor-bio"
+    />
+  </div>
+  <div class="campo">
+    <label for="modulosTexto">Módulos (um por linha, "título|duração em minutos"):</label>
+    <textarea
+      id="modulosTexto"
+      formControlName="modulosTexto"
+      placeholder="Introdução|30&#10;Prática|60"
+      data-test-id="criar-textarea-modulos"
+    ></textarea>
+  </div>
+</form>

@@ -1,0 +1,32 @@
+
+
+
+
+<div class="codigo-container borda ">
+  <div class="request-response-header">
+    <p>Body Response</p>
+    @if (statusCode()) {
+      <div class="quadrado-cinza">
+        <div>Status Code:</div>
+        <div class="status-code-number"
+             [attr.data-test-id]="'body-response-status-code-' + apiType().toLowerCase()"
+             [ngStyle]="{
+                  'color':
+                    (statusCode() ?? 0) >= 100 && (statusCode() ?? 0) <= 199 ? 'var(--text-color)' :
+                    (statusCode() ?? 0) >= 200 && (statusCode() ?? 0) <= 299 ? 'var(--status-code-color-2xx)' :
+                    (statusCode() ?? 0) >= 300 && (statusCode() ?? 0) <= 399 ? 'var(--text-color)' :
+                    (statusCode() ?? 0) >= 400 && (statusCode() ?? 0) <= 499 ? 'var(--status-code-color-4xx)' :
+                    (statusCode() ?? 0) >= 500 && (statusCode() ?? 0) <= 599 ? 'var(--status-code-color-5xx)' :
+                    'var(--text-color)'
+                }">
+          {{ statusCode() }}
+        </div>
+      </div>
+    }
+  </div>
+  <div class="code-content">
+    <textarea highlight-js [lang]="'{{linguagem()}}'"
+              [attr.data-test-id]="'body-response-textarea-' + apiType().toLowerCase()"
+    >{{formattedResponse}}</textarea>
+  </div>
+</div>

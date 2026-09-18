@@ -1,0 +1,219 @@
+.api-type-container {
+  /*background-color: white;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  min-width: 100%;
+}
+.api-type-header-rest{
+  background-image: linear-gradient( var(--rest) var(--porcentagem-header-comparator), darkgray);
+}
+.api-type-header-soap{
+  background-image: linear-gradient( var(--soap) var(--porcentagem-header-comparator), darkgray);
+}
+.api-type-header-graphql{
+  background-image: linear-gradient( var(--graphql) var(--porcentagem-header-comparator), darkgray);
+}
+.api-type-header {
+  padding: 0 10px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  /*box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);*/
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  p{
+  margin-left: auto;
+  margin-right: auto;
+  }
+}
+
+.api-type-header .indicator {
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+.api-type-header .indicator.pra-baixo {
+  transform: rotate(180deg);
+}
+
+.api-type-header:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.02);
+}
+
+.api-type-main{
+  display: grid;
+  transition: grid-template-rows 500ms;
+  /* utilizei uma estrategia interessante para minimizar e maximizar a div: https://www.youtube.com/watch?v=B_n4YONte5A*/
+  padding: 0 10px;
+  width: 100%;
+}
+.aparecer{
+  grid-template-rows: 1fr;
+}
+.desaparecer{
+  grid-template-rows: 0fr;
+}
+
+.api-type-content {
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  /*background: linear-gradient( #d2fdd2, #e0e0e0);*/
+}
+
+
+
+.metodo-executar-url-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+
+}
+
+.metodo-executar-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metodo-content {
+  justify-self: start;
+  border-radius: 8px;
+  width: 60px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+}
+
+.getColor { background-color: green; }
+.postColor { background-color: orange; }
+.putColor  { background-color: blue; }
+.deleteColor { background-color: red; }
+
+.executar {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  transition: all 0.2s ease-in-out;
+}
+.executar:hover img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+.executar img {
+  width: 30px;
+  height: 30px;
+}
+
+.url-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: var(--background-color);
+  /*padding: 8px 12px;*/
+  width: 90%;
+  max-width: 700px;
+  /*word-wrap: break-word;*/
+  text-align: center;
+
+  font-size: 13px;
+  div{
+    margin: 0;
+    padding: 6px;
+    /*text-align: center;*/
+    p{
+      padding: 5px;
+    }
+  }
+}
+.url-texto {
+  /*color: #333;*/
+  /*background-color: #eaeaea;*/
+  width: 80%;
+  word-break: break-all;
+  /*align-items: start;*/
+  p{
+    background-color: var(--background-divs-color);
+    border-radius: 6px;
+  }
+}
+
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--text-color);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media (max-width: 480px) {
+  .selecionar-atributos-para-response-graphql-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .selecionar-atributos-para-response-graphql-content label {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.codigos-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*gap: 10px;*/
+  /*margin-top: 10px;*/
+  gap: 20px;
+  width: 100%;
+  padding-block: 20px;
+}
+
+app-code-highlighter-request, app-code-highlighter-response{
+  display: block;
+  width: 90%;
+  align-self: center;
+
+}
+
+

@@ -1,0 +1,123 @@
+<!--
+    Contrato do leg SOAP. Documental: Controller\CursoSoapController faz o
+    parsing/montagem do XML manualmente (não carrega este XSD em runtime),
+    mas segue exatamente esta forma, incluindo os elementos repetidos (tags,
+    modulos) e o elemento aninhado (instrutor).
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://cursos-api-comparator/soap"
+           xmlns:tns="https://cursos-api-comparator/soap"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="Nivel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="INICIANTE"/>
+            <xs:enumeration value="INTERMEDIARIO"/>
+            <xs:enumeration value="AVANCADO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Instrutor">
+        <xs:sequence>
+            <xs:element name="nome" type="xs:string" minOccurs="0"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+            <xs:element name="bio" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Modulo">
+        <xs:sequence>
+            <xs:element name="ordem" type="xs:int" minOccurs="0"/>
+            <xs:element name="titulo" type="xs:string" minOccurs="0"/>
+            <xs:element name="duracaoMinutos" type="xs:int" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- LISTAR CURSOS -->
+    <xs:element name="listCursosRequest" type="xs:anyType"/>
+    <xs:element name="listCursosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cursos" type="tns:CursoFields" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- PROCURAR CURSOS -->
+    <xs:element name="procurarCursosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titulo" type="xs:string" minOccurs="0"/>
+                <xs:element name="descricao" type="xs:string" minOccurs="0"/>
+                <xs:element name="minCargaHoraria" type="xs:long" minOccurs="0"/>
+                <xs:element name="maxCargaHoraria" type="xs:long" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="procurarCursosResponse" type="tns:listCursosResponse"/>
+
+    <!-- CAMPOS COMUNS DE UM CURSO (usados em CursoResponse e nos requests) -->
+    <xs:complexType name="CursoFields">
+        <xs:sequence>
+            <xs:element name="codigo" type="xs:string"/>
+            <xs:element name="titulo" type="xs:string" minOccurs="0"/>
+            <xs:element name="descricao" type="xs:string" minOccurs="0"/>
+            <xs:element name="cargaHoraria" type="xs:long" minOccurs="0"/>
+            <xs:element name="nivel" type="tns:Nivel" minOccurs="0"/>
+            <xs:element name="preco" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="ativo" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="criadoEm" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="atualizadoEm" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="tags" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="instrutor" type="tns:Instrutor" minOccurs="0"/>
+            <xs:element name="modulos" type="tns:Modulo" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- CREATE CURSO -->
+    <xs:element name="createCursoRequest" type="tns:CursoFields"/>
+    <xs:element name="createCursoResponse" type="tns:CursoResponse"/>
+
+    <!-- UPDATE CURSO -->
+    <xs:element name="updateCursoRequest">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tns:CursoFields">
+                    <xs:sequence>
+                        <xs:element name="codigoNovo" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateCursoResponse" type="tns:CursoResponse"/>
+
+    <!-- DELETE CURSO -->
+    <xs:element name="deleteCursoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCursoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- GET CURSO -->
+    <xs:element name="getCursoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codigo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CursoResponse" type="tns:CursoFields"/>
+
+</xs:schema>

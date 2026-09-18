@@ -1,0 +1,72 @@
+"""
+Contrato do leg GraphQL. Documental: o parser em Controller\CursoGraphqlController
+é "sob medida" (não carrega este arquivo em runtime, não resolve variáveis nem
+fragmentos), mas entende exatamente esta forma — incluindo os tipos e enums
+aninhados abaixo.
+"""
+
+enum Nivel {
+    INICIANTE
+    INTERMEDIARIO
+    AVANCADO
+}
+
+type Instrutor {
+    nome: String
+    email: String
+    bio: String
+}
+
+input InstrutorInput {
+    nome: String
+    email: String
+    bio: String
+}
+
+type Modulo {
+    ordem: Int
+    titulo: String
+    duracaoMinutos: Int
+}
+
+input ModuloInput {
+    ordem: Int
+    titulo: String
+    duracaoMinutos: Int
+}
+
+type Curso {
+    codigo: String!
+    titulo: String
+    descricao: String
+    cargaHoraria: Int
+    nivel: Nivel
+    preco: Float
+    ativo: Boolean
+    criadoEm: String
+    atualizadoEm: String
+    tags: [String]
+    instrutor: Instrutor
+    modulos: [Modulo]
+}
+
+type Query {
+    listCursos(titulo: String, descricao: String, minCargaHoraria: Int, maxCargaHoraria: Int): [Curso]
+    getCursoByCodigo(codigo: String!): Curso
+}
+
+type Mutation {
+    createCurso(
+        codigo: String!, titulo: String, descricao: String, cargaHoraria: Int,
+        nivel: Nivel, preco: Float, ativo: Boolean,
+        tags: [String], instrutor: InstrutorInput, modulos: [ModuloInput]
+    ): Curso
+
+    updateCurso(
+        codigo: String!, codigoNovo: String, titulo: String, descricao: String, cargaHoraria: Int,
+        nivel: Nivel, preco: Float, ativo: Boolean,
+        tags: [String], instrutor: InstrutorInput, modulos: [ModuloInput]
+    ): Curso
+
+    deleteCurso(codigo: String!): Boolean
+}

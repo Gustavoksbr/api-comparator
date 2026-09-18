@@ -1,0 +1,52 @@
+{
+  "autorun": true,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "RAIZ",
+      "description": "Terminal na raiz do projeto API Comparator",
+      "focus": true
+    },
+    {
+      "name": "📚 Frontend Dev",
+      "description": "Servidor de desenvolvimento Angular (frontend)",
+      "icon": "code",
+      "color": "terminal.ansiGreen",
+      "cwd": "./web",
+      "command": "npm start",
+      "execute": false
+    },
+    {
+      "name": "🐘 Backend Run",
+      "description": "Inicia a API PHP com o servidor embutido (php -S)",
+      "icon": "server",
+      "color": "terminal.ansiYellow",
+      "cwd": "./api",
+      "command": "php -S localhost:8080 -t public public/router.php",
+      "execute": false
+    },
+    {
+      "name": "🔴 Kill Port 4200",
+      "description": "Mata processos usando a porta 4200 (frontend Angular)",
+      "icon": "close",
+      "color": "terminal.ansiRed",
+      "command": "Get-NetTCPConnection -LocalPort 4200 -ErrorAction SilentlyContinue | Where-Object { $_.OwningProcess -gt 0 } | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }",
+      "execute": false
+    },
+    {
+      "name": "🔴 Kill Port 8080",
+      "description": "Mata processos usando a porta 8080 (API PHP)",
+      "icon": "close",
+      "color": "terminal.ansiRed",
+      "command": "Get-NetTCPConnection -LocalPort 8080 -ErrorAction SilentlyContinue | Where-Object { $_.OwningProcess -gt 0 } | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }",
+      "execute": false
+    },
+    {
+      "name": "GIT",
+      "description": "Terminal para comandos GIT",
+      "icon": "git-commit",
+      "color": "terminal.ansiGreen",
+      "cwd": "./"
+    }
+  ]
+}

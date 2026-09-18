@@ -1,0 +1,19 @@
+header{
+  width: 100%;
+  height: 60px;
+  background-color: var(--background-header-footer-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.tema-icone{
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.tema-icone:hover{
+  opacity: 0.5;
+}

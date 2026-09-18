@@ -1,0 +1,14 @@
+<div class="sandbox-info" data-test-id="sandbox-info">
+  <div class="sandbox-info-linha">
+    <span>Sandbox: <b data-test-id="sandbox-id-atual">{{ sandboxIdCurto() }}</b></span>
+    <button type="button" (click)="novoSandbox()" data-test-id="botao-novo-sandbox">Novo sandbox</button>
+    <button type="button" (click)="exportarPostman()" data-test-id="botao-exportar-postman">
+      Exportar para Postman
+    </button>
+  </div>
+  <p class="sandbox-info-explicacao">
+    Cada visitante tem seus próprios cursos de teste, isolados dos demais — o que você cria,
+    altera ou deleta aqui não é visto por mais ninguém. O sandbox expira sozinho após um tempo
+    de inatividade, ou você pode trocar para um novo, vazio, quando quiser.
+  </p>
+</div>

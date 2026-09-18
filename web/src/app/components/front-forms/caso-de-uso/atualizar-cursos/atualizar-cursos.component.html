@@ -1,0 +1,141 @@
+<form [formGroup]="formulario">
+  <h3>Altere um curso</h3>
+  <div class="campo">
+    <label for="codigo">Código atual:</label>
+    <input
+      id="codigo"
+      formControlName="codigo"
+      type="text"
+      [maxLength]="15"
+      data-test-id="alterar-input-codigo"
+    />
+    <div class="contador-caracteres">
+      {{ this.cursoAtual().codigo?.length || 0 }}/15
+    </div>
+  </div>
+  <div class="campo">
+    <label for="codigoNovo">Código novo:</label>
+    <input
+      id="codigoNovo"
+      formControlName="codigoNovo"
+      type="text"
+      [maxLength]="15"
+      data-test-id="alterar-input-codigo-novo"
+    />
+    <div class="contador-caracteres">
+      {{ this.cursoAtual().codigoNovo?.length || 0 }}/15
+    </div>
+  </div>
+  <div class="campo">
+    <label for="titulo">Título novo:</label>
+    <input
+      id="titulo"
+      type="text"
+      formControlName="titulo"
+      [maxLength]="30"
+      data-test-id="alterar-input-titulo"
+    />
+    <div class="contador-caracteres">
+      {{ this.cursoAtual().titulo?.length || 0 }}/30
+    </div>
+  </div>
+  <div class="campo">
+    <label for="descricao">Descrição nova:</label>
+    <textarea
+      id="descricao"
+      type="text"
+      formControlName="descricao"
+      [maxLength]="100"
+      data-test-id="alterar-textarea-descricao"
+    ></textarea>
+    <div class="contador-caracteres">
+      {{ this.cursoAtual().descricao?.length || 0 }}/100
+    </div>
+  </div>
+  <div class="campo">
+    <label for="cargahoraria">Carga horária nova:</label>
+    <input
+      id="cargahoraria"
+      type="number"
+      formControlName="cargaHoraria"
+      [max]="300"
+      data-test-id="alterar-input-carga-horaria"
+    />
+  </div>
+  <div class="campo">
+    <label for="nivel">Nível novo:</label>
+    <select id="nivel" formControlName="nivel" data-test-id="alterar-select-nivel">
+      <option value="">(não alterar)</option>
+      <option value="INICIANTE">INICIANTE</option>
+      <option value="INTERMEDIARIO">INTERMEDIARIO</option>
+      <option value="AVANCADO">AVANCADO</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="preco">Preço novo:</label>
+    <input
+      id="preco"
+      type="number"
+      step="0.01"
+      formControlName="preco"
+      data-test-id="alterar-input-preco"
+    />
+  </div>
+  <div class="campo">
+    <label for="ativo">Ativo novo:</label>
+    <select id="ativo" formControlName="ativo" data-test-id="alterar-select-ativo">
+      <option value="">(não alterar)</option>
+      <option value="true">sim</option>
+      <option value="false">não</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="tags">Tags novas (separadas por vírgula):</label>
+    <input
+      id="tags"
+      type="text"
+      formControlName="tags"
+      data-test-id="alterar-input-tags"
+    />
+  </div>
+  <div class="campo">
+    <label for="instrutorNome">Instrutor novo — nome:</label>
+    <input
+      id="instrutorNome"
+      type="text"
+      formControlName="instrutorNome"
+      data-test-id="alterar-input-instrutor-nome"
+    />
+  </div>
+  <div class="campo">
+    <label for="instrutorEmail">Instrutor novo — email:</label>
+    <input
+      id="instrutorEmail"
+      type="email"
+      formControlName="instrutorEmail"
+      data-test-id="alterar-input-instrutor-email"
+    />
+  </div>
+  <div class="campo">
+    <label for="instrutorBio">Instrutor novo — bio:</label>
+    <input
+      id="instrutorBio"
+      type="text"
+      formControlName="instrutorBio"
+      data-test-id="alterar-input-instrutor-bio"
+    />
+  </div>
+  <div class="campo">
+    <label for="modulosTexto">Módulos novos (um por linha, "título|duração em minutos"):</label>
+    <textarea
+      id="modulosTexto"
+      formControlName="modulosTexto"
+      placeholder="Introdução|30&#10;Prática|60"
+      data-test-id="alterar-textarea-modulos"
+    ></textarea>
+  </div>
+  <div class="mensagem-campo-vazio">
+    Obs: Deixe o campo vazio (ou "não alterar") caso não queira alterar o valor. Para
+    tags e módulos, informar qualquer valor substitui a lista inteira.
+  </div>
+</form>

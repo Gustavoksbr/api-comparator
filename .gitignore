@@ -1,0 +1,13 @@
+# web (Angular)
+web/node_modules/
+web/dist/
+web/.angular/
+web/coverage/
+
+# api (PHP)
+api/vendor/
+api/.env
+
+# geral
+.DS_Store
+*.log
